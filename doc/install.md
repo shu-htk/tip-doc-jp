@@ -1,14 +1,17 @@
-# Install
+# インストール
 
-At the moment the following systems have been tested.
+現在、以下のシステムで動作確認しています。
 
-- Ubuntu 24.04 (both of native and WSL2 on Windows11)
-- AlmaLinux 9.5 (both of native and WSL2 on Windows11)
+- Ubuntu 24.04
+- AlmaLinux 9.5
 
-In principle you can install the tip on the system
-which PLPLOT and GNU readline are installed.
+基本的にPLPLOT と GNU readline がインストールされていれば
+インストールできると思います。
 
-## (1) Install PLPLOT, GNU-readline
+
+## (1) PLPLOT, GNU-readlineライブラリのインストール
+
+以下のようにパッケージマネージャーを用いてインストールしてください。
 
 - **Ubuntu 24.04**
 ```
@@ -23,7 +26,7 @@ sudo apt install libreadline-dev
 ```
 sudo dnf update
 sudo dnf upgrade
-sudo dnf install dnf-plugins-core     (<-- this may not be necessary)
+sudo dnf install dnf-plugins-core     (<-- これは必要ないかも)
 sudo dnf config-manager --enable crb
 sudo dnf install epel-release
 sudo dnf install epel-next-release
@@ -33,71 +36,76 @@ sudo dnf install readline-devel
 ```
 - **Windows 11**
 
-The easiest way is to run the Linux on WSL2.
+WSL2上に各種Linuxディストリビューションを動作させ、
+その上でパッケージマネージャーを用いてインストールしてください。
+
+WSLについては以下のリンクを参考にしてください。
 
 official : https://learn.microsoft.com/windows/wsl/install  
 
+ちなみにCygwinにもインストールできます。
+必要なパッケージは「PLPLOT cygwin」等のキーワードでネット検索してみてください。
+（例）https://sourceforge.net/p/plplot/wiki/Setup_cygwin/
 
-## (2) Configure and make the tip executable
 
-Access to https://github.com/shu-htk/tip-dev
+## (2) tip の実行ファイルのコンパイル方法
 
-From the **"Code"** pull-down menu, choose **"Download zip"**
+GitHubのリポジトリ： https://github.com/shu-htk/tip-dev
 
-or directly download from
+**"Code"** プルダウンメニューから **"Download zip"**
+を選んでアーカイブファイルをダウンロードします。
+
+直接以下のURLからダウンロードすることもできます。  
  https://github.com/shu-htk/tip-dev/archive/refs/heads/main.zip
 
-Copy downloaded zip file to your working directory.
+ダウンロードしたファイルをご自分のワーク用ディレクトリにコピーしてください。
 
-On the Linux terminal, extract zip file,
+コンソール端末を開いて以下のコマンドでzipファイルを解凍します
+
 ```
 unzip tip-dev-main.zip
 ```
 
-then do
+その後、以下のようにして、configureスクリプトを実行し、makeコマンドを
+使ってコンパイルします。
 ```
 cd tip-dev-main
 ./configure
 make
 ```
-The executable is compiled and outputted to `./bin/tip`
+コンパイルされた実行ファイルはカレントディレクトリ上の`./bin/tip　に出力されます。`
 
-If your shell has command path to $HOME/bin,
-copy the executable file to `$HOME/bin` by
+シェルに$HOME/binへのコマンドパスがある場合は、
 ```
 make install
 ```
-<!--
-edit $HOME/.bashrc and add the following line
-```
-export PATH=$PATH:$HOME/bin
-```
--->
+とすると実行ファイルが`$HOME/bin`にコピーされます。
 
-## (3) About my_macro 
 
-The executable file `my_macro` is also installed when you install the `tip`.  
-It is a simple example using [MacroTool](ref/MacroTool.md).
+## (3) my_macro について 
 
-## (4) Enable EPICS CA (optional)
+`tip` をインストールすると、実行ファイル `my_macro` もインストールされます。
+これはソースファイルに同梱されているヘッダーオンリーのクラスライブラリ
+[MacroTool](ref/MacroTool.md) を使った簡単なインタープリタコマンドです。
 
-If it is already installed the EPICS in your computer,
-just check if the environment variable `EPICS_BASE` is set in your shell.
-If it is set,
-the [configure script of the Tip](#2-configure-and-make-the-tip-executable)
-generate Makefile to enable the EPICS CA.
 
-If it is not installed the EPICS, you need to make and setup the
-EPICS environment as following.
+## (4) EPICS CA の有効化(オプション機能)
 
-Download the archive of the EPICS source.
+お使いのコンピュータにEPICSが既にインストールされている場合は、
+環境変数 EPICS_BASE が設定されているかどうかを確認してください。
+設定されている場合、Tipのconfigureスクリプトを実行した際に、
+EPICS CAを有効化したMakefileが作成されます。
 
-- stable:: 
+EPICSがインストールされていない場合は以下の手順でEPICS環境を構築し設定する必要があります。
+
+EPICSソースのアーカイブを以下のURLからダウンロードしてください。
+
+- stable:
 https://epics-controls.org/download/base/base-3.15.9.tar.gz
 - new:
 https://epics-controls.org/download/base/base-7.0.9.tar.gz
 
-For example, installing new version to $HOME/epics
+たとえば、新しいバージョンを$HOME/epicsにインストールするなら、
 
 ```
 mkdir -p $HOME/epics
@@ -107,9 +115,9 @@ tar zxf base-7.0.9.tar.gz
 cd base-7.0.9
 make
 ```
-It takes for a while to complete compiling.
+としてください。コンパイルが完了するまで少し時間がかかります。
 
-After that you should set the environment variable as following.
+その後、環境変数を以下のように設定してください。
 
 ```
 export EPICS_BASE=$HOME/epics/base-7.0.9
