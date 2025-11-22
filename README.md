@@ -1,38 +1,35 @@
 # tip - tiny interactive plot
 
-Tip is a command-line based data plotting tool.
-It is written in C++ and depends on the library of
-[PLPLOT](https://plplot.sourceforge.net/),
-and [GNU readline](https://cgit.git.savannah.gnu.org/cgit/readline.git). 
-Basically it works on Linux or other Unix-like OS.
-Although it has fewer functions than existing plotting tools,
-it just aims ease of use over versatility.
+Tipはコマンドラインベースのデータプロットツールです。
+C++で記述されており、PLPLOTライブラリとGNU readlineに依存しています。
+基本的にLinuxやその他のUnix系OSで動作します。
+既存のプロットツールに比べて機能は少ないですが、汎用性よりも使いやすさを重視しています。
 
-## Features
+## 特徴
 
-- plot the curve in 2D and 3D
-- plot the histogram in 2D and 3D
-- plot the FFT power spectrum
-- data fitting to the curve and the histogram
-- data sorting, cutting
-- control (`for`,`do`,`while`,`end`,`if`,`elif`,`else`,`fi`)
-- execute macro file
-- save to pdf or png file
-- [EPICS](https://epics-controls.org/) CA access (optional)
+- 2Dおよび3Dで曲線をプロットする
+- 2Dおよび3Dでヒストグラムをプロットする
+- FFTパワースペクトルをプロットする
+- 曲線とヒストグラムへのデータフィッティング
+- データのソート、切り取り
+- 制御（`for`、`do`、`while`、`end`、`if`、`elif`、`else`、`fi`）
+- マクロファイルを実行する
+- PDFまたはPNGファイルに保存する
+- [EPICS](https://epics-controls.org/) CAアクセス（オプション）
 
-## Install
+## インストール
 
 - [how to install](doc/install.md)
 
-## Tutorial
+## チュートリアル
 
 - [tutorial](doc/tutorial.md)
 
-## Macro Examples
+## マクロファイルの例
 
 - [macro examples](doc/examples.md)
 
-## Command Reference
+## コマンドリファレンス
 
 - [command reference](doc/reference.md)
 
