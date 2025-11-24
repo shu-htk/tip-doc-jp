@@ -41,8 +41,9 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
@@ -66,24 +67,28 @@ GNU-readlineライブラリのインストール</h2>
 <ul>
 <li><strong>Ubuntu 24.04</strong></li>
 </ul>
-<pre><code>sudo apt update
+<pre><code>
+sudo apt update
 sudo apt upgrade
 sudo apt install g++
 sudo apt install libplplot-dev
 sudo apt install plplot-driver-cairo
-sudo apt install libreadline-dev</code></pre>
+sudo apt install libreadline-dev
+ </code></pre>
 <ul>
 <li><strong>AlmaLinux 9</strong></li>
 </ul>
-<pre><code>sudo dnf update
+<pre><code>
+sudo dnf update
 sudo dnf upgrade
-sudo dnf install dnf-plugins-core     (&lt;-- これは必要ないかも)
+sudo dnf install dnf-plugins-core     (&lt;-- this may not be necessary)
 sudo dnf config-manager --enable crb
 sudo dnf install epel-release
 sudo dnf install epel-next-release
 sudo dnf install g++
 sudo dnf install plplot-devel
-sudo dnf install readline-devel</code></pre>
+sudo dnf install readline-devel
+ </code></pre>
 <ul>
 <li><strong>Windows 11</strong></li>
 </ul>
@@ -92,35 +97,40 @@ sudo dnf install readline-devel</code></pre>
 <p>WSLについては以下のリンクを参考にしてください。</p>
 <p><a href="https://learn.microsoft.com/windows/wsl/install">https://learn.microsoft.com/windows/wsl/install</a></p>
 <p>ちなみにCygwinにもインストールできます。 必要なパッケージは「PLPLOT
-cygwin」等のキーワードでネット検索してみてください。 （例）
-[https://sourceforge.net/p/plplot/wiki/Setup_cygwin/(https://sourceforge.net/p/plplot/wiki/Setup_cygwin/)</p>
+cygwin」等のキーワードでネット検索してみてください。 （例） <a href="https://sourceforge.net/p/plplot/wiki/Setup_cygwin/">https://sourceforge.net/p/plplot/wiki/Setup_cygwin/</a></p>
 <h2 id="tip-の実行ファイルのコンパイル方法">(2) tip
 の実行ファイルのコンパイル方法</h2>
 <p>GitHubのリポジトリ： <a href="https://github.com/shu-htk/tip-dev">https://github.com/shu-htk/tip-dev</a></p>
-<p><strong>“Code”</strong> プルダウンメニューから <strong>“Download
-zip”</strong> を選んでアーカイブファイルをダウンロードします。</p>
-<p>直接以下のURLからダウンロードすることもできます。<br />
-<a href="https://github.com/shu-htk/tip-dev/archive/refs/heads/main.zip">https://github.com/shu-htk/tip-dev/archive/refs/heads/main.zip</a></p>
+<p>“Code” プルダウンメニューから “Download zip”
+を選んでアーカイブファイルをダウンロードします。</p>
+<p>直接以下のURLからダウンロードすることもできます。 <a href="https://github.com/shu-htk/tip-dev/archive/refs/heads/main.zip">https://github.com/shu-htk/tip-dev/archive/refs/heads/main.zip</a></p>
 <p>ダウンロードしたファイルをご自分のワーク用ディレクトリにコピーしてください。</p>
 <p>コンソール端末を開いて以下のコマンドでzipファイルを解凍します</p>
-<pre><code>unzip tip-dev-main.zip</code></pre>
-<p>その後、以下のようにして、configureスクリプトを実行し、makeコマンドを
-使ってコンパイルします。</p>
-<pre><code>cd tip-dev-main
+<pre><code>
+unzip tip-dev-main.zip
+ </code></pre>
+<p>その後、以下のようにして、configureスクリプトを実行し、
+makeコマンドを 使ってコンパイルします。</p>
+<pre><code>
+cd tip-dev-main
 ./configure
-make</code></pre>
-<p>コンパイルされた実行ファイルはカレントディレクトリ上の<code>./bin/tip　に出力されます。</code></p>
+make
+ </code></pre>
+<p>コンパイルされた実行ファイルはカレントディレクトリ上の
+<code>./bin/tip</code> に出力されます。</p>
 <p>シェルに$HOME/binへのコマンドパスがある場合は、</p>
-<pre><code>make install</code></pre>
-<p>とすると実行ファイルが<code>$HOME/bin</code>にコピーされます。</p>
+<pre><code>
+make install
+ </code></pre>
+<p>とすると実行ファイルが <code>$HOME/bin</code> にコピーされます。</p>
 <h2 id="my_macro-について">(3) my_macro について</h2>
 <p><code>tip</code> をインストールすると、実行ファイル
 <code>my_macro</code> もインストールされます。
 これはソースファイルに同梱されているヘッダーオンリーのクラスライブラリ
 <a href="ref/MacroTool.html">MacroTool</a>
-を使った簡単なインタープリタコマンドです。</p>
-<h2 id="epics-ca-の有効化オプション機能">(4) EPICS CA
-の有効化(オプション機能)</h2>
+を使った簡単なインタープリタコマンドです</p>
+<h2 id="epics-ca-の有効化-オプション機能">(4) EPICS CA の有効化
+(オプション機能)</h2>
 <p>お使いのコンピュータにEPICSが既にインストールされている場合は、
 環境変数 EPICS_BASE が設定されているかどうかを確認してください。
 設定されている場合、Tipのconfigureスクリプトを実行した際に、 EPICS
@@ -128,18 +138,22 @@ CAを有効化したMakefileが作成されます。</p>
 <p>EPICSがインストールされていない場合は以下の手順でEPICS環境を構築し設定する必要があります。</p>
 <p>EPICSソースのアーカイブを以下のURLからダウンロードしてください。</p>
 <ul>
-<li>stable: <a href="https://epics-controls.org/download/base/base-3.15.9.tar.gz">https://epics-controls.org/download/base/base-3.15.9.tar.gz</a></li>
+<li>stable:: <a href="https://epics-controls.org/download/base/base-3.15.9.tar.gz">https://epics-controls.org/download/base/base-3.15.9.tar.gz</a></li>
 <li>new: <a href="https://epics-controls.org/download/base/base-7.0.9.tar.gz">https://epics-controls.org/download/base/base-7.0.9.tar.gz</a></li>
 </ul>
 <p>たとえば、新しいバージョンを$HOME/epicsにインストールするなら、</p>
-<pre><code>mkdir -p $HOME/epics
+<pre><code>
+mkdir -p $HOME/epics
 cp base-7.0.9.tar.gz $HOME/epics
 cd $HOME/epics
 tar zxf base-7.0.9.tar.gz
 cd base-7.0.9
-make</code></pre>
+make
+ </code></pre>
 <p>としてください。コンパイルが完了するまで少し時間がかかります。</p>
 <p>その後、環境変数を以下のように設定してください。</p>
-<pre><code>export EPICS_BASE=$HOME/epics/base-7.0.9</code></pre>
+<pre><code>
+export EPICS_BASE=$HOME/epics/base-7.0.9
+ </code></pre>
 </body>
 </html>
