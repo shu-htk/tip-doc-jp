@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>write</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+background-color: #fdf6e3;
+margin: 40px;
+padding: 20px;
+border: 2px solid gray;
+border-radius: 10px;
+}
+
+table, th, td {
+background-color: #eee8d5;
+border: 1px solid gray;
+border-collapse: collapse;
+padding: 6px;
+}
+code {
+background-color: #f6f8fa;
+padding: 6px;
+border-radius: 3px;
+}
+pre {
+text-indent: 0;
+padding: 16px;
+background-color: #f6f8fa;
+border: 2px solid gray;
+border-radius: 6px;
+overflow-x: auto;
+line-height: 1.45;
+}
+</style>
+</head>
+<body>
+<h1 id="write">write</h1>
+<pre><code>tip&gt; write
+usage: write v1,v2,... file_name ([opt])
+ where v1,v2,... is list of data to write</code></pre>
+<h2 id="option">option</h2>
+<h3 id="option-with-quoted-argument-by">option with quoted argument by
+“”</h3>
+<ul>
+<li><code>fs:</code> field separator</li>
+</ul>
+<h2 id="argument-list-of-variable-names">argument list of variable
+names</h2>
+<blockquote>
+<p>argument list of variable names is separated by comma with no
+spaces.</p>
+</blockquote>
+<h2 id="wild-card-matching-to-the-variable-name">wild-card matching to
+the variable name</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">match to</th>
+<th style="text-align: center;">wild card</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">any string</td>
+<td style="text-align: center;">*</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">any character</td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">one of the list of chars</td>
+<td style="text-align: center;">[abc..], [a-z]</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>wild card is <strong>not the regular expression</strong></p>
+</blockquote>
+<p>example</p>
+<pre><code>tip&gt; do n 1 4; set v[n]=random(3,uni); end
+tip&gt; cat v*
+v1 : data(num) :  0.72222002676 0.95971852632 0.6427698157
+v2 : data(num) :  0.89879791527 0.059244560571 0.55197352802
+v3 : data(num) :  0.78516065878 0.31009663609 0.25585515437
+v4 : data(num) :  0.58039504503 0.26256283944 0.16205607036
+
+tip&gt; write v* test.dat
+
+tip&gt; sys cat test.dat
+0.72222002676 0.89879791527 0.78516065878 0.58039504503
+0.95971852632 0.059244560571 0.31009663609 0.26256283944
+0.6427698157 0.55197352802 0.25585515437 0.16205607036
+
+tip&gt; read a test.dat
+
+tip&gt; cat a*
+a1 : data(num) :  0.72222002676 0.95971852632 0.6427698157
+a2 : data(num) :  0.89879791527 0.059244560571 0.55197352802
+a3 : data(num) :  0.78516065878 0.31009663609 0.25585515437
+a4 : data(num) :  0.58039504503 0.26256283944 0.16205607036</code></pre>
+</body>
+</html>

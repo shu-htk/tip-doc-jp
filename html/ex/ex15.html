@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>ex15</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+background-color: #fdf6e3;
+margin: 40px;
+padding: 20px;
+border: 2px solid gray;
+border-radius: 10px;
+}
+
+table, th, td {
+background-color: #eee8d5;
+border: 1px solid gray;
+border-collapse: collapse;
+padding: 6px;
+}
+code {
+background-color: #f6f8fa;
+padding: 6px;
+border-radius: 3px;
+}
+pre {
+text-indent: 0;
+padding: 16px;
+background-color: #f6f8fa;
+border: 2px solid gray;
+border-radius: 6px;
+overflow-x: auto;
+line-height: 1.45;
+}
+</style>
+</head>
+<body>
+<h1 id="ex15-draw-all-patterns-of-fill-box-and-symbols">ex15: Draw all
+patterns of fill box and symbols</h1>
+<pre><code>viewport 0.1 0.9 0.1 0.9 0.76
+div 2 2
+
+title &quot;15 colors and 9 patterns of fill box&quot;
+box 0 16 -1 9 (xt:1 yt:1 xn:1 yn:1)
+do fc 1 15 ;# fill area colors
+ do ft 0 8 ;# fill area pattens
+  @ x0 = [fc]-0.5
+  @ x1 = [fc]+0.5
+  @ y0 = [ft]-0.5
+  @ y1 = [ft]+0.5
+  fbox [x0] [x1] [y0] [y1] (fc:[fc] ft:[ft] rp:1)
+ end
+end
+
+title &quot;125 patterns of symbols&quot;
+box -1 10 -1 13 (xt:1 yt:1 xn:1 yn:1)
+do n 1 125
+ @ x = [n]%10
+ @ y = floor([n]/10)
+ symb [x] [y] (st:[n])
+end
+
+title &quot;an example of fill area of specified points&quot;
+box -2 2 -1.6 1.6
+@ pi2 = 3.14159265*2
+set t = range(8,0,[pi2])
+set x = cos(t)
+set y = sin(t)
+fill x y (fc:red ft:pn45 rp:1)
+
+title &quot;another example of fill area of specified points&quot;
+box -[pi2] [pi2] -1.5 1.5
+set x = range(100,-[pi2],[pi2])
+set y = sin(x)
+fill x y (gd:1 lc:white fc:green ft:solid rp:1)</code></pre>
+<p><img src="../fig/ex15.png" /></p>
+</body>
+</html>

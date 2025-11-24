@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>MacroTool</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+background-color: #fdf6e3;
+margin: 40px;
+padding: 20px;
+border: 2px solid gray;
+border-radius: 10px;
+}
+
+table, th, td {
+background-color: #eee8d5;
+border: 1px solid gray;
+border-collapse: collapse;
+padding: 6px;
+}
+code {
+background-color: #f6f8fa;
+padding: 6px;
+border-radius: 3px;
+}
+pre {
+text-indent: 0;
+padding: 16px;
+background-color: #f6f8fa;
+border: 2px solid gray;
+border-radius: 6px;
+overflow-x: auto;
+line-height: 1.45;
+}
+</style>
+</head>
+<body>
+<h1 id="macrotool">MacroTool</h1>
+<p>MacroTool is the header-only class library which provide the
+following command:</p>
+<pre><code>macro commands:
+ @     : define numerical or string variable
+ ++    : increment(+1) numerical variable
+ --    : decrement(-1) numerical variable
+ for   : foreach loop
+ do    : numerical ranged loop
+ if    : conditional branch
+ print : print arguments (abbr. pr)
+ fmt   : set output format of macro variable
+ wait  : wait time or console input
+ sys   : execute system command
+ calc  : evaluate the numerical expression
+ logic : evaluate the logical expression
+ q     : terminate this program</code></pre>
+<p>There is a simple example how to use MacroTool :
+<code>src/my_macro.cc</code>.</p>
+<pre><code>// my_macro : simple example how to use thl::MacroTool
+//
+// -std=c++03
+//
+#include &quot;thl/MacroTool.hh&quot;
+
+class MyMacro : public thl::MacroTool {
+private:
+  int _debug;
+public:
+  MyMacro() : _debug(0) {}
+  int add_commands(std::string buf) {// called from thl::MacroTool::parse_vbuf()
+    thl::StrSplit args(buf);
+    if(args(0)==&quot;help&quot;) {
+      printf(&quot;additional commands:\n&quot;
+         &quot; exe  : execute a macro file.\n&quot;
+         &quot; ls   : print macro variables.\n&quot;
+         &quot; rm   : remove macro variables.\n&quot;
+         );
+      print_help();
+      return 0;
+    }
+    if(args(0)==&quot;exe&quot;) {
+      if(args.size() &lt; 2) {
+    printf(&quot;usage: exe [macro_file] [debug]\n&quot;
+           &quot; execute macro_file.\n&quot;);
+    return 0;
+      }
+      _debug = (args.size()&gt;2) ? 1 : 0;
+      if(_debug) printf(&quot;debug mode\n&quot;);
+      exec(args(1));
+      return 0;
+    }
+    if(args(0)==&quot;ls&quot;) {
+      if(args.size() &lt; 2) {
+    printf(&quot;usage: ls [pattern]\n&quot;
+           &quot; print macro variables which matches pattern.\n&quot;
+           &quot; example: &#39;ls *&#39; show all defined macro variables.\n&quot;);
+    return 0;
+      }
+      var.ls(args(1));
+      return 0;
+    }
+    if(args(0)==&quot;rm&quot;) {
+      if(args.size() &lt; 2) {
+    printf(&quot;usage: rm [pattern]\n&quot;
+           &quot; remove macro variables which matches pattern.\n&quot;
+           &quot; example: &#39;rm *&#39;  remove all macro variables.\n&quot;);
+    return 0;
+      }
+      var.rm(args(1));
+      return 0;
+    }
+    return 1;
+  }
+};
+
+int main() {
+  MyMacro macro;
+  macro.main_loop();
+  return 0;
+}</code></pre>
+</body>
+</html>

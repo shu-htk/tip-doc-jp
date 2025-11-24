@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>caget</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+background-color: #fdf6e3;
+margin: 40px;
+padding: 20px;
+border: 2px solid gray;
+border-radius: 10px;
+}
+
+table, th, td {
+background-color: #eee8d5;
+border: 1px solid gray;
+border-collapse: collapse;
+padding: 6px;
+}
+code {
+background-color: #f6f8fa;
+padding: 6px;
+border-radius: 3px;
+}
+pre {
+text-indent: 0;
+padding: 16px;
+background-color: #f6f8fa;
+border: 2px solid gray;
+border-radius: 6px;
+overflow-x: auto;
+line-height: 1.45;
+}
+</style>
+</head>
+<body>
+<h1 id="caget">caget</h1>
+<pre><code>tip&gt; caget
+usage: caget EPICS_record [&gt; v]
+ get the value from EPICS_record and print contents
+ if &#39;&gt;&#39; is specified the value is redirected to the data v.
+ also the following macro variable is created.
+macro variable:
+   v : the 1st element of data v</code></pre>
+<p>Get the all elements of EPICS_record and print them.</p>
+<p>If it is redirected to “&gt; v”, the following variables are
+created.</p>
+<ul>
+<li><strong>data varaible :</strong>
+<code>set v = (all elements of EPICS_record)</code></li>
+<li><strong>macro variable :</strong>
+<code>@ v = (1st element of EPICS_record)</code></li>
+</ul>
+<p>exmaple</p>
+<pre><code>tip&gt; caget monitor:wf.NELM
+monitor:wf.NELM 2025-11-09 15:56:40.736024  100
+
+tip&gt; caget monitor:wf.NELM &gt; nelm
+tip&gt; ls nelm
+nelm : number [100]        ;# created macro variable
+nelm : data(num) : size=1  ;# created data variable
+
+tip&gt; set t=range([nelm],1,[nelm])
+tip&gt; set v=sin(t)
+tip&gt; cat v (nr:1,2)
+v : data(num) :  0.84147098481 0.90929742683
+
+tip&gt; caput monitor:wf &lt; v
+
+tip&gt; caget monitor:wf &gt; v2
+tip&gt; ls v2
+v2 : number [0.84147098481]   ;# created macro variable (1st elemrnt of wf)  
+v2 : data(num) : size=100     ;# created data variable (all elements of wf)
+
+tip&gt; cat v2 (nr:1,2)
+v2 : data(num) :  0.84147098481 0.90929742683</code></pre>
+</body>
+</html>

@@ -41,22 +41,25 @@ WSL2上に各種Linuxディストリビューションを動作させ、
 
 WSLについては以下のリンクを参考にしてください。
 
-official : https://learn.microsoft.com/windows/wsl/install  
+[https://learn.microsoft.com/windows/wsl/install](https://learn.microsoft.com/windows/wsl/install)
 
 ちなみにCygwinにもインストールできます。
 必要なパッケージは「PLPLOT cygwin」等のキーワードでネット検索してみてください。
-（例）https://sourceforge.net/p/plplot/wiki/Setup_cygwin/
+（例）
+[https://sourceforge.net/p/plplot/wiki/Setup_cygwin/(https://sourceforge.net/p/plplot/wiki/Setup_cygwin/)
 
 
 ## (2) tip の実行ファイルのコンパイル方法
 
-GitHubのリポジトリ： https://github.com/shu-htk/tip-dev
+GitHubのリポジトリ： 
+[https://github.com/shu-htk/tip-dev](https://github.com/shu-htk/tip-dev)
 
 **"Code"** プルダウンメニューから **"Download zip"**
 を選んでアーカイブファイルをダウンロードします。
 
 直接以下のURLからダウンロードすることもできます。  
- https://github.com/shu-htk/tip-dev/archive/refs/heads/main.zip
+[https://github.com/shu-htk/tip-dev/archive/refs/heads/main.zip](https://github.com/shu-htk/tip-dev/archive/refs/heads/main.zip)
+
 
 ダウンロードしたファイルをご自分のワーク用ディレクトリにコピーしてください。
 
@@ -76,6 +79,7 @@ make
 コンパイルされた実行ファイルはカレントディレクトリ上の`./bin/tip　に出力されます。`
 
 シェルに$HOME/binへのコマンドパスがある場合は、
+
 ```
 make install
 ```
@@ -101,9 +105,9 @@ EPICSがインストールされていない場合は以下の手順でEPICS環�
 EPICSソースのアーカイブを以下のURLからダウンロードしてください。
 
 - stable:
-https://epics-controls.org/download/base/base-3.15.9.tar.gz
+[https://epics-controls.org/download/base/base-3.15.9.tar.gz](https://epics-controls.org/download/base/base-3.15.9.tar.gz)
 - new:
-https://epics-controls.org/download/base/base-7.0.9.tar.gz
+[https://epics-controls.org/download/base/base-7.0.9.tar.gz](https://epics-controls.org/download/base/base-7.0.9.tar.gz)
 
 たとえば、新しいバージョンを$HOME/epicsにインストールするなら、
 

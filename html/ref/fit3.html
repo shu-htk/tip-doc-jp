@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>fit3</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+background-color: #fdf6e3;
+margin: 40px;
+padding: 20px;
+border: 2px solid gray;
+border-radius: 10px;
+}
+
+table, th, td {
+background-color: #eee8d5;
+border: 1px solid gray;
+border-collapse: collapse;
+padding: 6px;
+}
+code {
+background-color: #f6f8fa;
+padding: 6px;
+border-radius: 3px;
+}
+pre {
+text-indent: 0;
+padding: 16px;
+background-color: #f6f8fa;
+border: 2px solid gray;
+border-radius: 6px;
+overflow-x: auto;
+line-height: 1.45;
+}
+</style>
+</head>
+<body>
+<h1 id="fit3">fit3</h1>
+<pre><code>tip&gt; fit3
+usage: fit3 x y z [plane] [(opt)]
+ do fitting to the data x,y,z by plane function.
+ you should do &#39;plot3 x y z&#39; before this command.
+ available fitting functions:
+   p[lane] : z = c0 + c1*x + c2*y</code></pre>
+<p>Fit the plane to data x, y and z after <a href="plot3.html">plot3</a>
+command. The fitting information is outputted to console and fitting
+plane is drawn on the existing graph. If you specify option
+<code>cp:X,Y</code>, the fitting information is drawn in the graph at
+(X,Y).</p>
+<p><strong>note)</strong><br />
+&gt; user defined fitting function is not available</p>
+<h2 id="fitting-functions">fitting functions</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">name</th>
+<th style="text-align: center;">abbr.</th>
+<th style="text-align: center;">function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">plane</td>
+<td style="text-align: center;">p</td>
+<td style="text-align: center;">z = c0 + c1*x + c2*y</td>
+</tr>
+</tbody>
+</table>
+<h2 id="option">option</h2>
+<h3 id="option-with-single-argument">option with single argument</h3>
+<ul>
+<li><code>lc:</code> line color of fitting plane</li>
+<li><code>lt:</code> line style of fitting plane</li>
+<li><code>rc:</code> flag to set relative coordinate for comment
+position</li>
+<li><code>cf:</code> set tag of macro variable to store fitting
+coefficients</li>
+</ul>
+<h3 id="option-with-two-arguments">option with two arguments</h3>
+<blockquote>
+<p>arguments is separated by comma with no spaces.</p>
+</blockquote>
+<ul>
+<li>cp: comment position of fitting information</li>
+</ul>
+<p>for example, see <a href="../ex/ex10.html">ex10</a></p>
+</body>
+</html>

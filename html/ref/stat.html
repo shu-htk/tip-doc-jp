@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>stat</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+background-color: #fdf6e3;
+margin: 40px;
+padding: 20px;
+border: 2px solid gray;
+border-radius: 10px;
+}
+
+table, th, td {
+background-color: #eee8d5;
+border: 1px solid gray;
+border-collapse: collapse;
+padding: 6px;
+}
+code {
+background-color: #f6f8fa;
+padding: 6px;
+border-radius: 3px;
+}
+pre {
+text-indent: 0;
+padding: 16px;
+background-color: #f6f8fa;
+border: 2px solid gray;
+border-radius: 6px;
+overflow-x: auto;
+line-height: 1.45;
+}
+</style>
+</head>
+<body>
+<h1 id="stat">stat</h1>
+<pre><code>tip&gt; stat
+usage: stat v [(opt)]
+ make the statistics information of data v.
+ the macro variables [v_max] [v_min] [v_mean] [v_rms]
+ and [v_entry] are created.
+ if option &#39;cp:&#39; is specified they are drawn in the current graph.</code></pre>
+<p>example</p>
+<pre><code>tip&gt; @ sigma=3
+tip&gt; @ mean=5
+tip&gt; set x=random(10000,gaus,[sigma],[mean])
+
+tip&gt; stat x
+@ Statistics:
+ entry=10000
+ max= 16.644
+ min= -6.43861
+ mean= 4.99203
+ rms= 2.98497
+
+tip&gt; ls x_*
+x_entry : number [10000]
+x_max : number [16.643976249]
+x_mean : number [4.9920299184]
+x_min : number [-6.438606022]
+x_rms : number [2.9849657177]</code></pre>
+<p>for more example, see <a href="../ex/ex19.html">ex19</a></p>
+</body>
+</html>

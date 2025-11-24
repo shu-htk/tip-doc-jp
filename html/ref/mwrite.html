@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>mwrite</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+background-color: #fdf6e3;
+margin: 40px;
+padding: 20px;
+border: 2px solid gray;
+border-radius: 10px;
+}
+
+table, th, td {
+background-color: #eee8d5;
+border: 1px solid gray;
+border-collapse: collapse;
+padding: 6px;
+}
+code {
+background-color: #f6f8fa;
+padding: 6px;
+border-radius: 3px;
+}
+pre {
+text-indent: 0;
+padding: 16px;
+background-color: #f6f8fa;
+border: 2px solid gray;
+border-radius: 6px;
+overflow-x: auto;
+line-height: 1.45;
+}
+</style>
+</head>
+<body>
+<h1 id="mwrite">mwrite</h1>
+<pre><code>tip&gt; mwrite
+usage: mwrite x,y,z mesh-file [(opt)]
+ write data and mesh-data
+ where x is data of size N.
+       y is data of size M.
+       z is mesh-data of size N*M.</code></pre>
+<h2 id="option">option</h2>
+<h3 id="option-with-quoted-argument-by">option with quoted argument by
+“”</h3>
+<ul>
+<li><code>fs:</code> field separator</li>
+</ul>
+<h2 id="file-format">file format</h2>
+<p>data file is 3 column text separated by field separator. The default
+field separator is a space character.</p>
+<table>
+<thead>
+<tr class="header">
+<th>x</th>
+<th>y</th>
+<th>z</th>
+<th>comment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>x1</td>
+<td>y1</td>
+<td>z11</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>x2</td>
+<td>y1</td>
+<td>z21</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>xN</td>
+<td>y1</td>
+<td>zN1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td>here is a space line</td>
+</tr>
+<tr class="even">
+<td>x1</td>
+<td>y2</td>
+<td>z12</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>x2</td>
+<td>y2</td>
+<td>z22</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>xN</td>
+<td>y2</td>
+<td>zN2</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td>here is a space line</td>
+</tr>
+<tr class="odd">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>x1</td>
+<td>yM</td>
+<td>z1M</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>x2</td>
+<td>yM</td>
+<td>z2M</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>xN</td>
+<td>yM</td>
+<td>zNM</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="reading-mesh-file-by-gnuplot">reading mesh file by gnuplot</h2>
+<p>The data file written by <code>mwrite</code> can be plotted by
+gnuplot using <code>splot</code>.</p>
+<p>example</p>
+<pre><code>$ tip
+tip&gt; set x = range(32,-3.2,3.2)
+tip&gt; set y = range(30,-3,3)
+tip&gt; mset z = log(1+2*x*x+3*y*y)
+tip&gt; mwrite x,y,z mesh.dat
+tip&gt; q
+
+$ gnuplot
+gnuplot&gt; splot &#39;mesh.dat&#39; w l</code></pre>
+</body>
+</html>

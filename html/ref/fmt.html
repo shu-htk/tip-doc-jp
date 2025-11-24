@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>fmt</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+background-color: #fdf6e3;
+margin: 40px;
+padding: 20px;
+border: 2px solid gray;
+border-radius: 10px;
+}
+
+table, th, td {
+background-color: #eee8d5;
+border: 1px solid gray;
+border-collapse: collapse;
+padding: 6px;
+}
+code {
+background-color: #f6f8fa;
+padding: 6px;
+border-radius: 3px;
+}
+pre {
+text-indent: 0;
+padding: 16px;
+background-color: #f6f8fa;
+border: 2px solid gray;
+border-radius: 6px;
+overflow-x: auto;
+line-height: 1.45;
+}
+</style>
+</head>
+<body>
+<h1 id="fmt">fmt</h1>
+<pre><code>tip&gt; fmt
+usage: fmt [&quot;format&quot;|reset|show]
+ specify output format of macro variable.
+ (it is same as printf)
+ if &quot;reset&quot;, it is set to default (&quot;%.11g&quot;)
+ if &quot;show&quot;, print current format
+ example: @ x=1; fmt %03.0f; prn [x]
+ output:  001</code></pre>
+<p>available format specifiers</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">specifier</th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">%f</td>
+<td style="text-align: center;">OK</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">%e</td>
+<td style="text-align: center;">OK</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">%g</td>
+<td style="text-align: center;">OK</td>
+</tr>
+</tbody>
+</table>
+<p>the following specifiers are not available</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">specifier</th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">%c</td>
+<td style="text-align: center;">N/A</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">%s</td>
+<td style="text-align: center;">N/A</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">%d</td>
+<td style="text-align: center;">N/A</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">%u</td>
+<td style="text-align: center;">N/A</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">%x</td>
+<td style="text-align: center;">N/A</td>
+</tr>
+</tbody>
+</table>
+<pre><code>tip&gt; @ e=exp(1)
+tip&gt; prn [e]
+2.7182818285
+
+tip&gt; fmt %.3f
+tip&gt; prn [e]
+2.718
+
+tip&gt; fmt reset
+tip&gt; fmt show
+[%.11g]</code></pre>
+<pre><code>tip&gt; fmt %03d     ;# this is NG
+invalid format [%03d]
+since numerical variable type is &#39;double&#39;
+you should specify the format &#39;f&#39; or &#39;e&#39; or &#39;g&#39;
+tip&gt;
+tip&gt; fmt %03.0f   ;# this is OK
+tip&gt; do n 1 10; @ filename=test[n].dat; prn [filename]; end
+test001.dat
+test002.dat
+test003.dat
+test004.dat
+test005.dat
+test006.dat
+test007.dat
+test008.dat
+test009.dat
+test010.dat</code></pre>
+</body>
+</html>

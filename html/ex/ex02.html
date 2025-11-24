@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>ex02</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+background-color: #fdf6e3;
+margin: 40px;
+padding: 20px;
+border: 2px solid gray;
+border-radius: 10px;
+}
+
+table, th, td {
+background-color: #eee8d5;
+border: 1px solid gray;
+border-collapse: collapse;
+padding: 6px;
+}
+code {
+background-color: #f6f8fa;
+padding: 6px;
+border-radius: 3px;
+}
+pre {
+text-indent: 0;
+padding: 16px;
+background-color: #f6f8fa;
+border: 2px solid gray;
+border-radius: 6px;
+overflow-x: auto;
+line-height: 1.45;
+}
+</style>
+</head>
+<body>
+<h1 id="ex02-plot-mathematical-functions">ex02: Plot mathematical
+functions</h1>
+<pre><code>opt (gd:1 lc:red ts:1.2)
+vp 0.18 1.0 0.22 0.82 0.65
+div 4 4
+@ pi2 = 3.14159265*2
+
+for func (sqrt exp log log10 cos sin atan cosh sinh tanh acos asin tan floor)
+  @ xr = [func]=={acos,asin,tan} ? &quot;0,1&quot; : &quot;1e-4,[pi2]&quot; ;# x-range
+  set x = range(100,[xr])
+  set y = [func](x)
+  plot x y (tl:&quot;y=[func](x)&quot;)
+end
+
+for func_x (abs(sin(x)) pow(sin(x),3))
+  set x = range(100,0,[pi2])
+  set y = [func_x]
+  plot x y (tl:&quot;y=[func_x]&quot;)
+end</code></pre>
+<p><img src="../fig/ex02.png" /></p>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>if_fi</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+background-color: #fdf6e3;
+margin: 40px;
+padding: 20px;
+border: 2px solid gray;
+border-radius: 10px;
+}
+
+table, th, td {
+background-color: #eee8d5;
+border: 1px solid gray;
+border-collapse: collapse;
+padding: 6px;
+}
+code {
+background-color: #f6f8fa;
+padding: 6px;
+border-radius: 3px;
+}
+pre {
+text-indent: 0;
+padding: 16px;
+background-color: #f6f8fa;
+border: 2px solid gray;
+border-radius: 6px;
+overflow-x: auto;
+line-height: 1.45;
+}
+</style>
+</head>
+<body>
+<h1 id="if-elif-else-fi">if, elif, else, fi</h1>
+<pre><code>tip&gt; if
+usage: if expr; ...; elif expr; ...; else; ...; fi</code></pre>
+<p>conditional branch by evaluating logical expression</p>
+<p>see <a href="logic.html">logic</a> to learn how the logical
+expression evaluated</p>
+<ul>
+<li>example 1</li>
+</ul>
+<pre><code>do n 1 10
+  if [n]&lt;3
+    continue
+  elif [n]&gt;=8
+    break
+  else
+    prn [n]
+  fi
+end</code></pre>
+<p>result</p>
+<pre><code>3
+4
+5
+6
+7</code></pre>
+<ul>
+<li>example 2</li>
+</ul>
+<pre><code>for c (H e l l o W o r l d)
+  pr [c]
+  if [c]==[A-Z]; pr  : Capital; fi
+  pr \n
+end</code></pre>
+<p>result</p>
+<pre><code>H: Capital
+e
+l
+l
+o
+W: Capital
+o
+r
+l
+d</code></pre>
+<ul>
+<li>example 3</li>
+</ul>
+<pre><code>for name (Greg Anna Ryan Mary Josh)
+  pr [name]
+  if [name]=={Greg,Ryan,Josh}
+    pr  : Boy
+  fi
+  if [name]=={Anna,Mary}
+    pr  : Girl
+  fi
+  if [name]==A*
+    pr  : name begin from &#39;A&#39;
+  fi
+  pr \n
+end</code></pre>
+<p>result</p>
+<pre><code>Greg: Boy
+Anna: Girl: name begin from &#39;A&#39;
+Ryan: Boy
+Mary: Girl
+Josh: Boy</code></pre>
+</body>
+</html>

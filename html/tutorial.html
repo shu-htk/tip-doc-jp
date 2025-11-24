@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>tutorial</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+background-color: #fdf6e3;
+margin: 40px;
+padding: 20px;
+border: 2px solid gray;
+border-radius: 10px;
+}
+
+table, th, td {
+background-color: #eee8d5;
+border: 1px solid gray;
+border-collapse: collapse;
+padding: 6px;
+}
+code {
+background-color: #f6f8fa;
+padding: 6px;
+border-radius: 3px;
+}
+pre {
+text-indent: 0;
+padding: 16px;
+background-color: #f6f8fa;
+border: 2px solid gray;
+border-radius: 6px;
+overflow-x: auto;
+line-height: 1.45;
+}
+</style>
+</head>
+<body>
+<h1 id="tutorial">Tutorial</h1>
+<h2 id="starting-the-tip-interpreter">Starting the tip interpreter</h2>
+<p>from the Linux shell,</p>
+<pre><code>$ tip</code></pre>
+<p>where you should set the shell’s command path to the executable file
+of tip</p>
+<p>see <a href="install.html">how to install</a> to learn making
+executable file.</p>
+<h2 id="making-data-and-plot">Making data and plot</h2>
+<pre><code>tip&gt; title &quot;Plotting the data and fitting the curve&quot;
+tip&gt; set x = {1,2,3,4,5,6,7,8,9,10}
+tip&gt; set y = 2*x*x
+tip&gt; plot x y (lw:0 st:star sc:red gd:1)
+tip&gt; fit x y quad (cp:1,200 lc:blue)</code></pre>
+<figure>
+<img src="fig/tut01.png" alt="macro/tut01.tip" />
+<figcaption aria-hidden="true">macro/tut01.tip</figcaption>
+</figure>
+<p>“<a href="ref/title.html">title</a>” specify the text at the top of
+the graph.<br />
+“<a href="ref/set.html">set</a>” create the data instance, where data is
+an array of numbers.<br />
+“<a href="ref/plot.html">plot</a>” draw the 2D-plot using data x and
+y.<br />
+“<a href="ref/fit.html">fit</a>” make the fitting curve by the specified
+function, in this example “quad” means Quadratic function.</p>
+<p>The arguments enclosed in ( ) are options.</p>
+<p><code>(lw:0)</code> set the line width 0, i.e. not draw the
+line.<br />
+<code>(st:star)</code> set the <a href="#symbols">symbol</a> style ‘star
+shape’.<br />
+<code>(sc:red)</code> set the symbol <a href="#colors">color</a>
+red.<br />
+<code>(gd:1)</code> set the flag to draw the grid lines in the
+graph.<br />
+<code>(cp:1,200)</code> set the comment position about the fitting
+parameters at (x=1, y=200) in the graph coordinate.<br />
+<code>(lc:blue)</code>set the line <a href="#colors">color</a> blue.</p>
+<p>The options which are put at the back of the command are the local
+options. (i.e. they only applied to the same line).<br />
+On the other hand the options defined by <a href="ref/opt.html">opt</a>
+command is the global options.</p>
+<pre><code>tip&gt; opt (lw:0 st:star sc:red gd:1)</code></pre>
+<p>The global options are applied to all bellow this command.</p>
+<h2 id="showing-data-information">Showing data information</h2>
+<p>data made by user are listed by <a href="ref/ls.html">ls</a>
+command.</p>
+<pre><code>tip&gt; ls *
+x : data(num) : size=10
+y : data(num) : size=10</code></pre>
+<p>contents of the data is shown by <a href="ref/cat.html">cat</a>
+command.</p>
+<pre><code>tip&gt; cat y
+y : data(num) :  2 8 18 32 50 72 98 128 162 200</code></pre>
+<h2 id="reading-data-from-the-file-and-plot">Reading data from the file
+and plot</h2>
+<pre><code>tip&gt; title &quot;Reading test.csv&quot;
+tip&gt; read v test.csv (fs:&quot;,&quot;)
+tip&gt; xlab &quot;1st column data&quot; 
+tip&gt; ylab &quot;2nd and 3rd column data&quot; 
+tip&gt; plot v1 v2 (lc:red)
+tip&gt; plot v1 v3 (lc:blue rp:1)</code></pre>
+<p>In this example, <code>test.csv</code> is a CSV text file that has 3
+columns of data.<br />
+“<a href="ref/read.html">read</a>” is reading the data from the file, at
+that time, the column number is automatically added to the specified
+variable name like v1, v2, v3.<br />
+This feature is convenient if there are many columns in the data
+file.</p>
+<p>“<a href="ref/xlab.html">xlab</a>”/“<a href="ref/ylab.html">ylab</a>”
+specify x-axis/y-axis label respectively.</p>
+<p><code>(fs:&quot;,&quot;)</code> is option to specify the filed separator of
+data.<br />
+<code>(lc:red)</code> and <code>(lc:blue)</code> are options to specify
+the line color.<br />
+<code>(rp:1)</code> is option to do ‘replot’ i.e. over-drawing in the
+existing graph.</p>
+<figure>
+<img src="fig/tut02b.png" alt="macro/tut02b.tip" />
+<figcaption aria-hidden="true">macro/tut02b.tip</figcaption>
+</figure>
+<p>If the number of columns in the file is not so large, you can specify
+variable name for each column like,</p>
+<pre><code>tip&gt; read x,y,z test.csv (fs:&quot;,&quot;)</code></pre>
+<p>where data of 1st, 2nd, 3rd columns are named x, y, z
+respectively.</p>
+<p>In some cases, 1st column is assigned for x-axis and the rests are
+assigned for y-axis,<br />
+in that case you can do like,</p>
+<pre><code>tip&gt; read x,y test.csv (fs:&quot;,&quot;)</code></pre>
+<p>where 1st column is named x and 2nd, 3rd are named to y1, y2
+respectively.</p>
+<h2 id="drawing-fill-box-line-and-text">Drawing fill box, line and
+text</h2>
+<pre><code>tip&gt; title &quot;Drawing fill box, line and text&quot;
+tip&gt; read x,y test.csv (fs:&quot;,&quot;)
+tip&gt; xlab &quot;x&quot; ; ylab &quot;y1, y2&quot; 
+tip&gt; plot x y1 (lc:red)
+tip&gt; plot x y2 (lc:blue rp:1)
+tip&gt; opt (rc:1)
+tip&gt; fbox 0.80 0.95 0.80 0.95 (ft:solid)
+tip&gt; line 0.82 0.86 0.90 0.90 (lc:red);  text 0.88 0.90 &quot;y1&quot;
+tip&gt; line 0.82 0.86 0.85 0.85 (lc:blue); text 0.88 0.85 &quot;y2&quot;</code></pre>
+<figure>
+<img src="fig/tut02c.png" alt="macro/tut02c.tip" />
+<figcaption aria-hidden="true">macro/tut02c.tip</figcaption>
+</figure>
+<p>“<a href="ref/fbox.html">fbox</a>” draws the fill-area-box, “<a href="ref/line.html">line</a>” draws a line, “<a href="ref/text.html">text</a>” draws text in the graph.<br />
+<code>(ft:solid)</code> set the <a href="#fill-area-style">fill-area-style</a> “solid”.<br />
+<code>(rc:1)</code> set the flag of relative axis coordinate.<br />
+where relative axis coordinate means that the axis-range is defined from
+0.0 to 1.0 for both of x-axis and y-axis.</p>
+<h2 id="histogram-1d">Histogram 1D</h2>
+<pre><code>tip&gt; title &quot;Histogram of Gaussian distribution (sigm=5,mean=10)&quot;
+tip&gt; ylab &quot;Num of entries&quot;
+tip&gt; set x = random(100000,gaus,5,10)
+tip&gt; hplot x (nb:50)
+tip&gt; hfit x gaus (lc:green cp:0.03,0.9 rc:1 ts:0.8)
+tip&gt; stat x (cp:0.03,0.6 rc:1 ts:0.8)</code></pre>
+<figure>
+<img src="fig/tut03.png" alt="macro/tut03.tip" />
+<figcaption aria-hidden="true">macro/tut03.tip</figcaption>
+</figure>
+<p>“<a href="ref/random.html">random</a>” make random distribution with
+specified data size.<br />
+In this example, it is generated 100000 sizes of Gaussian distribution
+with sigma=5 mean=10.<br />
+“<a href="ref/hplot.html">hplot</a>” creates a 1D-histogram of the
+specified data. In this example, a histogram with bin number 50 is
+generated.<br />
+The x-range of the histogram is calculated to include all data unless it
+is specified the option <code>(xr:Xmin,Xmax)</code>.<br />
+“<a href="ref/hfit.html">hfit</a>” makes a fitting curve to the
+histogram with the specified function and it is drawn over the existing
+plot. <code>(cp:0.03,0.9 rc:1)</code> specify to draw the fitting
+information at x=0.05,y=0.9 in the relative coordinate.<br />
+<code>(ts:0.8)</code> specify the text size 0.8 (default is 1.0).<br />
+“<a href="ref/stat.html">stat</a>” make the statistics information of
+the specified data, and it is drawn over the existing plot if the option
+<code>(cp:)</code> is specified.</p>
+<h2 id="histogram-2d">Histogram 2D</h2>
+<pre><code>tip&gt; title &quot;2D-Histogram of gaus.dist (sigm=5,mean=10 and sigm=8,mean=20)&quot;
+tip&gt; zlab &quot;Num of entries&quot;
+tip&gt; set x = random(100000,gaus,5,10)
+tip&gt; set y = random(100000,gaus,8,20)
+tip&gt; hplot2 x y (nx:30 ny:30)</code></pre>
+<figure>
+<img src="fig/tut04.png" alt="macro/tut04.tip" />
+<figcaption aria-hidden="true">macro/tut04.tip</figcaption>
+</figure>
+<p>“<a href="ref/hplot2.html">hplot2</a>” makes 2D-histogram of a pair
+of data.<br />
+<code>(nx:30)</code> and <code>(ny:30)</code> are options to specify
+x-axis and y-axis bin number relatively.</p>
+<h2 id="quit-the-tip-interpreter">Quit the tip interpreter</h2>
+<pre><code>tip&gt; q</code></pre>
+<p>It is saved the command history to the file <code>.tip_history</code>
+in your working directory.</p>
+<h2 id="making-a-macro-file-and-executing-it">Making a macro file and
+executing it</h2>
+<p>Copy the command history to the macro file like,</p>
+<pre><code>$ cp .tip_history some_macro.tip</code></pre>
+<p>and edit the file <code>some_macro.tip</code></p>
+<p>then do,</p>
+<pre><code>tip&gt; exe some_macro.tip</code></pre>
+<h2 id="colors">Colors</h2>
+<p>To find color names defined in tip, type <code>opt color</code> or
+<code>opt c</code>.</p>
+<pre><code>tip&gt; opt color
+color names of the symbol/line/fill :
+ red(1), yellow(ylw,2), green(grn,3), aqua(aqu,4), pink(pnk,5)
+ wheat(wht,6), gray(gry,7), brown(brn,8), blue(blu,9), violet(vio,10)
+ cyan(cyn,11), turquoise(tqs,12), magenta(mgt,13), salmon(smn,14)
+ black(blk,15)</code></pre>
+<h2 id="symbols">Symbols</h2>
+<p>To find symbols names defined in tip, type <code>opt symbol</code> or
+<code>opt s</code>.</p>
+<pre><code>tip&gt; opt symbol
+names of the symbol :
+ non(0), dot(1), plus(pls,2), star(str,3), arc(4), cross(crs,5), square(sqr,6),
+ triangle(tri,7), arccross(acc,8), arcdot(acd,9), square2(sq2,10),
+ diamond(dia,11), star2(st2,12), square3(sq3,13), cross2(cr2,14), star3(st3,15),
+ blacksqr,(bsq,16)</code></pre>
+<h2 id="fill-area-style">Fill-Area-Style</h2>
+<p>To find fill-area names defined in tip, type <code>opt fill</code> or
+<code>opt f</code>.</p>
+<pre><code>tip&gt; opt fill
+names of the fill area style:
+ null(-1), solid(s,0), hor(1), ver(2), p45(3), n45(4), p30(5), n30(6), hv(7), pn45(8)</code></pre>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>ex101</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+background-color: #fdf6e3;
+margin: 40px;
+padding: 20px;
+border: 2px solid gray;
+border-radius: 10px;
+}
+
+table, th, td {
+background-color: #eee8d5;
+border: 1px solid gray;
+border-collapse: collapse;
+padding: 6px;
+}
+code {
+background-color: #f6f8fa;
+padding: 6px;
+border-radius: 3px;
+}
+pre {
+text-indent: 0;
+padding: 16px;
+background-color: #f6f8fa;
+border: 2px solid gray;
+border-radius: 6px;
+overflow-x: auto;
+line-height: 1.45;
+}
+</style>
+</head>
+<body>
+<h1 id="ex101-plot-the-trend-graph-of-the-data-using-epics-ca">ex101:
+plot the trend graph of the data using EPICS CA</h1>
+<pre><code>@ rec1 = monitor:ai1
+@ rec2 = monitor:ai2
+@ maxloop = 500
+
+camon [rec1] &gt; x1
+camon [rec2] &gt; x2
+
+opt (gd:1 xl:&quot;time&quot; tf:&quot;%H:%M:%S&quot;)
+
+div 1 2
+
+do loop 1 [maxloop]
+   title &quot;EPICS CA monitor (loop=[loop]/[maxloop])&quot;
+   cacheck x1,x2
+   if [x1.update]
+      set t=time(now)
+      cat t &gt;&gt; t1
+      cat x1 &gt;&gt; v1
+      plot t1 v1 (yl:&quot;[rec1]&quot; st:str sc:red bp:1)
+   fi
+   if [x2.update]
+      set t=time(now)
+      cat t &gt;&gt; t2
+      cat x2 &gt;&gt; v2
+      plot t2 v2 (yl:&quot;[rec2]&quot; st:str sc:blue bp:2)
+   fi
+   wait 0.1
+end
+
+caclose x1,x2</code></pre>
+<p><img src="../fig/ex101.png" /></p>
+<h2 id="epics-ioc-setting-for-the-above-example">EPICS IOC setting for
+the above example</h2>
+<pre><code>$ makeBaseApp.pl -t example test
+$ makeBaseApp.pl -i -t example test
+$ make
+$ cd iocBoot/ioctest</code></pre>
+<p>edit “st.cmd”</p>
+<pre><code>...
+#dbLoadTemplate &quot;db/user.substitutions&quot;
+dbLoadRecords  &quot;db/dbExample2.db&quot;, &quot;user=monitor, no=1, scan=1 second&quot;
+dbLoadRecords  &quot;db/dbExample2.db&quot;, &quot;user=monitor, no=2, scan=2 second&quot;
+...</code></pre>
+<p>then run the IOC</p>
+<pre><code>$ chmod +x st.cmd
+$ ./st.cmd</code></pre>
+</body>
+</html>

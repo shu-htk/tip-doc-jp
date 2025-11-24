@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>ex05</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+background-color: #fdf6e3;
+margin: 40px;
+padding: 20px;
+border: 2px solid gray;
+border-radius: 10px;
+}
+
+table, th, td {
+background-color: #eee8d5;
+border: 1px solid gray;
+border-collapse: collapse;
+padding: 6px;
+}
+code {
+background-color: #f6f8fa;
+padding: 6px;
+border-radius: 3px;
+}
+pre {
+text-indent: 0;
+padding: 16px;
+background-color: #f6f8fa;
+border: 2px solid gray;
+border-radius: 6px;
+overflow-x: auto;
+line-height: 1.45;
+}
+</style>
+</head>
+<body>
+<h1 id="ex05-greek-letters-and-some-font-effects">ex05: Greek letters
+and some Font effects</h1>
+<pre><code>title &quot;Greek letters and some Font effects&quot;
+div 1 1
+opt (gd:0 lw:2)
+box 0 14 0 10
+@ clist = &quot;A B C D E F G H I K L M N O P Q R S T U W X Y Z &quot;
+@ clist += &quot;a b c d e f g h i k l m n o p q r s t u w x y z&quot;
+@ n=0
+for c ([clist])
+ @ x = 1+[n]%12
+ @ y = 9-floor([n]/12)
+ text [x] [y] &quot;#g[c]&quot;
+ ++n
+end
+text 2 4.5 &quot;y=x#u2 (superscript)#d&quot;
+text 7 4.5 &quot;y=F#dn (subscript)#u&quot;
+text 2 3 &quot;#fn Normal (sans-serif) Font : #ga #gb #gg sin(2#gp#gH)&quot;
+text 2 2 &quot;#fr Roman (serif) Font : #ga #gb #gg sin(2#gp#gH)&quot;
+text 2 1 &quot;#fi Italic Font : #ga #gb #gg sin(2#gp#gH)&quot;</code></pre>
+<p><img src="../fig/ex05.png" /></p>
+</body>
+</html>

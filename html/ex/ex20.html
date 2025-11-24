@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>ex20</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+background-color: #fdf6e3;
+margin: 40px;
+padding: 20px;
+border: 2px solid gray;
+border-radius: 10px;
+}
+
+table, th, td {
+background-color: #eee8d5;
+border: 1px solid gray;
+border-collapse: collapse;
+padding: 6px;
+}
+code {
+background-color: #f6f8fa;
+padding: 6px;
+border-radius: 3px;
+}
+pre {
+text-indent: 0;
+padding: 16px;
+background-color: #f6f8fa;
+border: 2px solid gray;
+border-radius: 6px;
+overflow-x: auto;
+line-height: 1.45;
+}
+</style>
+</head>
+<body>
+<h1 id="ex20-plot-time-variation-of-increasing-data">ex20: plot time
+variation of increasing data</h1>
+<pre><code>opt (gd:1) ;# draw grid lines
+opt (fl:0) ;# disable flush to avoid screen flickering
+div 1 2
+@ nmax = 1000
+do n 1 [nmax]
+ set tnow = time(now) ; # timestamp of now
+ set vnow = random(1,gaus,0.1,0.7) ; # dummy data (random gaussian)
+ cat tnow &gt;&gt; t ; # append tnow to vector t
+ cat vnow &gt;&gt; v ; # append vnow to vector v
+ plot t v (tf:&quot;%H:%M:%S&quot; tl:&quot;Time variation of v ([n]/[nmax])&quot;)
+ hplot v (xr:0,2 ft:solid tl:&quot;Histogram of v&quot;)
+ wait 0.01
+ if [n]%100==0; prn [n]; fi
+end
+opt (fl:1) ;# enable flush
+hfit v gaus (lc:green cp:0.6,0.9 rc:1)</code></pre>
+<p><img src="../fig/ex20.png" /></p>
+</body>
+</html>

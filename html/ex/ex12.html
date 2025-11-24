@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>ex12</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+background-color: #fdf6e3;
+margin: 40px;
+padding: 20px;
+border: 2px solid gray;
+border-radius: 10px;
+}
+
+table, th, td {
+background-color: #eee8d5;
+border: 1px solid gray;
+border-collapse: collapse;
+padding: 6px;
+}
+code {
+background-color: #f6f8fa;
+padding: 6px;
+border-radius: 3px;
+}
+pre {
+text-indent: 0;
+padding: 16px;
+background-color: #f6f8fa;
+border: 2px solid gray;
+border-radius: 6px;
+overflow-x: auto;
+line-height: 1.45;
+}
+</style>
+</head>
+<body>
+<h1 id="ex12-plot-3d-contour-and-meshed-surface-with-colored-scaling">ex12:
+Plot 3D contour and meshed surface with colored scaling</h1>
+<pre><code>opt (gd:1 al:45 az:-40 gc:64) ;# gc: gradiation contour
+
+set x = random(10000,exp,-0.5) ;# random exponential tau=0.5
+set y = random(10000,gaus,5,0) ;# random gaussian sigma=5 mean=0
+@ nx = 20
+@ ny = 30
+@ xr = &quot;-1,10&quot;
+@ yr = &quot;-20,20&quot;
+
+div 2 2
+
+title &quot;histogram of x&quot;
+hplot x (nb:[nx] xr:[xr])
+
+title &quot;histogram of y&quot;
+hplot y (nb:[ny] xr:[yr])
+
+title &quot;2D-histogram of x y (colored contour plot)&quot;
+hplot2 x y (nx:[nx] ny:[ny] xr:[xr] yr:[yr] ht:slope mt:cont2)
+
+#viewport 0.05 0.95 -0.05 0.95 0.7
+title &quot;2D-histogram of x y (colored mesh plot)&quot;
+hplot2 x y (nx:[nx] ny:[ny] xr:[xr] yr:[yr] ht:slope mt:mesh2)</code></pre>
+<p><img src="../fig/ex12.png" /></p>
+</body>
+</html>

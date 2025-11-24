@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>yerr</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+background-color: #fdf6e3;
+margin: 40px;
+padding: 20px;
+border: 2px solid gray;
+border-radius: 10px;
+}
+
+table, th, td {
+background-color: #eee8d5;
+border: 1px solid gray;
+border-collapse: collapse;
+padding: 6px;
+}
+code {
+background-color: #f6f8fa;
+padding: 6px;
+border-radius: 3px;
+}
+pre {
+text-indent: 0;
+padding: 16px;
+background-color: #f6f8fa;
+border: 2px solid gray;
+border-radius: 6px;
+overflow-x: auto;
+line-height: 1.45;
+}
+</style>
+</head>
+<body>
+<h1 id="yerr">yerr</h1>
+<pre><code>tip&gt; yerr
+usage: yerr x y ey [(opt)]
+ plot y-error-bars of the data ey
+ you should do &#39;plot x y&#39; before this command.</code></pre>
+<p>example</p>
+<pre><code>@ num_of_data_set = 20
+
+set x = range([num_of_data_set],1,10)
+
+do n 1 [num_of_data_set]
+  @ num_of_trial = 100
+  @ sigma = 0.1
+  set measure = random([num_of_trial],gaus,[sigma]) 
+  stat measure
+  set mean = [measure_mean] ;# error of center value
+  set rms = [measure_rms]   ;# error of root mean square
+  cat mean &gt;&gt; err_mean      ;# append to data array
+  cat rms &gt;&gt; err_rms        ;# append to data array
+end
+
+@ pi = 3.14159265
+@ freq = 0.2
+set y = sin([freq]*2*[pi]*x) + err_mean  ;# measured data
+
+opt (gd:1 xt:1)
+plot x y (lw:0 st:star sc:red)  ;# plot measured data
+yerr x y err_rms                ;# plot error of measured data
+fit x y s (lc:blue fq:[freq])   ;# fitting to measured data</code></pre>
+</body>
+</html>

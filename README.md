@@ -1,7 +1,11 @@
 # tip - tiny interactive plot
 
 Tipはコマンドラインベースのデータプロットツールです。
-C++で記述されており、PLPLOTライブラリとGNU readlineに依存しています。
+C++で記述されており、
+[PLPLOT](https://plplot.sourceforge.net/)
+と
+[GNU readline](https://cgit.git.savannah.gnu.org/cgit/readline.git)
+に依存しています。
 基本的にLinuxやその他のUnix系OSで動作します。
 既存のプロットツールに比べて機能は少ないですが、汎用性よりも使いやすさを重視しています。
 

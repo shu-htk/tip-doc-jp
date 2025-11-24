@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>split</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+background-color: #fdf6e3;
+margin: 40px;
+padding: 20px;
+border: 2px solid gray;
+border-radius: 10px;
+}
+
+table, th, td {
+background-color: #eee8d5;
+border: 1px solid gray;
+border-collapse: collapse;
+padding: 6px;
+}
+code {
+background-color: #f6f8fa;
+padding: 6px;
+border-radius: 3px;
+}
+pre {
+text-indent: 0;
+padding: 16px;
+background-color: #f6f8fa;
+border: 2px solid gray;
+border-radius: 6px;
+overflow-x: auto;
+line-height: 1.45;
+}
+</style>
+</head>
+<body>
+<h1 id="split">split</h1>
+<pre><code>tip&gt; split
+usage: split s [fs]
+ split the string macro variable by delomiter fs
+ default delimiter is white space
+ splitted string variables are created named s1,..,sN
+ (N is number of splitted string)</code></pre>
+<p>exmaple</p>
+<pre><code>tip&gt; @ s = a b c d
+tip&gt; split s          ;# split s by default delimiter (white space)
+tip&gt; ls s*
+s : string [a b c d]
+s1 : string [a]
+s2 : string [b]
+s3 : string [c]
+s4 : string [d]
+
+tip&gt; rm *
+tip&gt; @ s = a &quot;b c&quot; d  ;# strings in the quotations are not splitted 
+tip&gt; split s
+tip&gt; ls s*
+s : string [a &quot;b c&quot; d]
+s1 : string [a]
+s2 : string [b c]
+s3 : string [d]
+
+tip&gt; rm *
+tip&gt; @ s = a, b, c, d
+tip&gt; split s ,         ;# split s by &quot;,&quot;
+tip&gt; ls s*
+s : string [a, b, c, d]
+s1 : string [a]
+s2 : string [b]
+s3 : string [c]
+s4 : string [d]
+
+tip&gt; rm *
+tip&gt; @ s = a, &quot;b, c&quot;, d  ;# strings in the quotations are not splitted 
+tip&gt; split s ,
+tip&gt; ls s*
+s : string [a, &quot;b, c&quot;, d]
+s1 : string [a]
+s2 : string [b, c]
+s3 : string [d]</code></pre>
+</body>
+</html>

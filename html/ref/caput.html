@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>caput</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">body {
+background-color: #fdf6e3;
+margin: 40px;
+padding: 20px;
+border: 2px solid gray;
+border-radius: 10px;
+}
+
+table, th, td {
+background-color: #eee8d5;
+border: 1px solid gray;
+border-collapse: collapse;
+padding: 6px;
+}
+code {
+background-color: #f6f8fa;
+padding: 6px;
+border-radius: 3px;
+}
+pre {
+text-indent: 0;
+padding: 16px;
+background-color: #f6f8fa;
+border: 2px solid gray;
+border-radius: 6px;
+overflow-x: auto;
+line-height: 1.45;
+}
+</style>
+</head>
+<body>
+<h1 id="caput">caput</h1>
+<pre><code>tip&gt; caput
+usage: caput EPICS_record &lt; v
+usage: caput EPICS_record &lt; expression
+ put the value to EPICS_record.
+ if data v exist, the value of v is put to EPICS_record,
+ if not exist, the expression value is put to EPICS_record.</code></pre>
+<p>example</p>
+<pre><code>tip&gt; cainfo monitor:str
+monitor:str
+    State:         connected
+    Host:          some.host.name
+    Access:        read=1, write=1
+    Data type:     DBR_STRING (native: DBF_STRING)
+    Element count: 1
+
+tip&gt; set s = Good morning
+tip&gt; caput monitor:str &lt; s
+tip&gt; caget monitor:str
+monitor:str 2025-11-09 16:35:33.955544  Good morning
+
+tip&gt; @ s1 = Hello
+tip&gt; @ s2 = World
+tip&gt; caput monitor:str &lt; [s1] [s2]
+tip&gt; caget monitor:str
+monitor:str 2025-11-09 16:42:22.081168  Hello World
+
+tip&gt; caput monitor:str &lt; exp(1)
+tip&gt; caget monitor:str
+monitor:str 2025-11-09 16:42:34.160567  2.7182818285</code></pre>
+<p>see also <a href="caget.html">caget</a>.</p>
+</body>
+</html>
