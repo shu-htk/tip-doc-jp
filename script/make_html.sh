@@ -8,8 +8,8 @@ mkdir -p html/ex html/ref
 #pandoc -f markdown -t html5 readme -s --self-contained -c $css -o index.html 
 #rm readme
 
-#for f in md/*.md md/ex/*.md md/ref/*.md ; do
-for f in md/tutorial.md ; do
+for f in md/*.md md/ex/*.md md/ref/*.md ; do
+#for f in md/tutorial.md ; do
     f2=$(basename ${f%.*})
     cat $f | sed 's%\.md%.html%g' > $f2
     dest=$(echo ${f%.*}.html | sed 's%md/%html/%g')
