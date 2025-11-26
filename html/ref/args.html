@@ -41,24 +41,33 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="args">args</h1>
-<pre><code>tip&gt; args
-usage: args [arg1,arg2,...]
- set default argument of the macro file
- they are named like x1=val,x2=val2,...
- if it is specified only values like val1,val2,...
- they are named $1=val1,$2=val2,...
- number of argumnts is named $#</code></pre>
+<pre><code>
+
+&gt; args
+usage: args [x1=v2,x2=v2,...]
+       args [v1,v2,...]
+ set default arguments of macro variables
+ if they are specified only values,
+ variables are defined as $1=v1,$2=v2,...
+ number of argument is defined as $#
+&gt;
+ 
+ </code></pre>
+<p>see also <a href="exe.html">exe</a></p>
 </body>
 </html>

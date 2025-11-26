@@ -41,26 +41,32 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="caput">caput</h1>
-<pre><code>tip&gt; caput
+<pre><code>
+tip&gt; caput
 usage: caput EPICS_record &lt; v
 usage: caput EPICS_record &lt; expression
  put the value to EPICS_record.
  if data v exist, the value of v is put to EPICS_record,
- if not exist, the expression value is put to EPICS_record.</code></pre>
+ if not exist, the expression value is put to EPICS_record.
+ </code></pre>
 <p>example</p>
-<pre><code>tip&gt; cainfo monitor:str
+<pre><code>
+tip&gt; cainfo monitor:str
 monitor:str
     State:         connected
     Host:          some.host.name
@@ -81,7 +87,8 @@ monitor:str 2025-11-09 16:42:22.081168  Hello World
 
 tip&gt; caput monitor:str &lt; exp(1)
 tip&gt; caget monitor:str
-monitor:str 2025-11-09 16:42:34.160567  2.7182818285</code></pre>
+monitor:str 2025-11-09 16:42:34.160567  2.7182818285
+ </code></pre>
 <p>see also <a href="caget.html">caget</a>.</p>
 </body>
 </html>

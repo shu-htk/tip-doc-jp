@@ -41,12 +41,15 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
@@ -54,7 +57,8 @@ line-height: 1.45;
 <body>
 <h1 id="ex09-data-cutting-and-simplified-logical-expression">ex09: Data
 cutting and simplified logical expression</h1>
-<pre><code>opt (lw:0)   ;# set line width 0 (not plot lines)
+<pre><code>
+opt (lw:0)   ;# set line width 0 (not plot lines)
 opt (ss:0.7) ;# set symbol size 
 opt (xt:10)  ;# x-axis tick 10
 
@@ -78,7 +82,8 @@ do n 1 2
   plot x y (st:star)
   plot x y (cc:&quot;[cc[n]]&quot; st:arc sc:red rp:1)
   fbox [x0] [x1] [y0] [y1] (lt:dot lc:green)
-end</code></pre>
+end
+ </code></pre>
 <p><img src="../fig/ex09.png" /></p>
 </body>
 </html>

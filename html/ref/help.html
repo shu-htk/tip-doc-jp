@@ -41,12 +41,15 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
@@ -54,7 +57,8 @@ line-height: 1.45;
 <body>
 <h1 id="help">help</h1>
 <p>It shows all commands of the tip interpreter.</p>
-<pre><code>tip&gt; help
+<pre><code>
+tip&gt; help
 list of commands:
  arc   : draw a circle in 2D-graph
  box   : draw the axis of 2D-graph in the box shape
@@ -116,6 +120,7 @@ macro commands:
  logic : evaluate the logical expression
  q     : terminate this program
 
- without arguments, you get usage of the above commands</code></pre>
+ without arguments, you get usage of the above commands
+ </code></pre>
 </body>
 </html>

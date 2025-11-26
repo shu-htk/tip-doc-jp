@@ -41,12 +41,15 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
@@ -54,7 +57,8 @@ line-height: 1.45;
 <body>
 <h1 id="ex22-gain-curve-of-low-pass-filter">ex22: Gain curve of Low Pass
 Filter</h1>
-<pre><code>@ pi2 = 3.14159265*2
+<pre><code>
+@ pi2 = 3.14159265*2
 @ C = 10e-9  ;# capacitance [F]
 @ R = 50     ;# resistance  [Ohm]
 @ f_cut = 1/([pi2]*[R]*[C])       ;# cut-off frequency [Hz]
@@ -69,7 +73,8 @@ plot freq gain_dB (gd:1 xm:0 xs:log lc:red)
 
 line 1e3 10e6 -3 -3 (lt:dot lc:blue)
 line [f_cut] [f_cut] -10 -3 (lc:blue ae:1)
-text 1e5 -12 &quot;f_cut at -3dB&quot; (tc:blue)</code></pre>
+text 1e5 -12 &quot;f_cut at -3dB&quot; (tc:blue)
+ </code></pre>
 <p><img src="../fig/ex22.png" /></p>
 </body>
 </html>

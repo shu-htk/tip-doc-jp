@@ -41,28 +41,36 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="section">++, –</h1>
-<pre><code>tip&gt; ++
+<pre><code>
+tip&gt; ++
 usage: ++var
- increment numerical macro variable</code></pre>
-<pre><code>tip&gt; --
+ increment numerical macro variable
+ </code></pre>
+<pre><code>
+tip&gt; --
 usage: --var
- decrement numerical macro variable</code></pre>
+ decrement numerical macro variable
+ </code></pre>
 <ul>
 <li>example 1</li>
 </ul>
-<pre><code>tip&gt; @ x=0.1
+<pre><code>
+tip&gt; @ x=0.1
 tip&gt; ls x
 x : number [0.1]
 tip&gt; ++x
@@ -70,14 +78,17 @@ tip&gt; ls x
 x : number [1.1]
 tip&gt; --x
 tip&gt; ls x
-x : number [0.1]</code></pre>
+x : number [0.1]
+ </code></pre>
 <ul>
 <li>example 2</li>
 </ul>
-<pre><code>tip&gt; @ n=1; for s (a b c); prn [s][n]; ++n; end
+<pre><code>
+tip&gt; @ n=1; for s (a b c); prn [s][n]; ++n; end
 a1
 b2
-c3</code></pre>
+c3
+ </code></pre>
 <p>see also <a href="loop.html">loop</a></p>
 </body>
 </html>

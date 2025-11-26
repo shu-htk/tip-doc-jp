@@ -41,24 +41,29 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="div">div</h1>
-<pre><code>tip&gt; div
+<pre><code>
+tip&gt; div
 usage: div nx ny [(bo:0|1)]
 divide graph area by horizontal(nx) and vertical(ny)
 option:
  bo:0  : horizontal box ordered (default)
- bo:1  : vertical box ordered</code></pre>
+ bo:1  : vertical box ordered
+ </code></pre>
 <p>divide drawing frame nx in horizontal, ny in vertical.</p>
 <h2 id="option">option</h2>
 <ul>

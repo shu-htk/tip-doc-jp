@@ -41,23 +41,28 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="plot">plot</h1>
-<pre><code>tip&gt; plot
+<pre><code>
+tip&gt; plot
 usage: plot [x] y [(opt)]
  plot the 2D-graph of data x and y.
  if data x is not specified the index data &#39;y_n&#39; is created
- then &#39;plot y_n y&#39; is done.</code></pre>
+ then &#39;plot y_n y&#39; is done.
+ </code></pre>
 <h2 id="option">option</h2>
 <h3 id="option-with-single-argument">option with single argument</h3>
 <ul>
@@ -114,7 +119,8 @@ calculated)</li>
 <li><code>cc:</code> cut condition (see <a href="cut.html">cut</a>)</li>
 </ul>
 <p>example</p>
-<pre><code>@ pi2=3.14159265*2
+<pre><code>
+@ pi2=3.14159265*2
 set t=range(50,0,[pi2])
 set v=sin(t)
 
@@ -125,6 +131,7 @@ title &quot;v_n vs v&quot;
 plot v          ;# index data &#39;v_n&#39; is automatically generated
 
 title &quot;t vs v&quot;
-plot t v</code></pre>
+plot t v
+ </code></pre>
 </body>
 </html>

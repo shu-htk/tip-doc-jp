@@ -41,12 +41,15 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
@@ -54,7 +57,8 @@ line-height: 1.45;
 <body>
 <h1 id="ex101-plot-the-trend-graph-of-the-data-using-epics-ca">ex101:
 plot the trend graph of the data using EPICS CA</h1>
-<pre><code>@ rec1 = monitor:ai1
+<pre><code>
+@ rec1 = monitor:ai1
 @ rec2 = monitor:ai2
 @ maxloop = 500
 
@@ -83,22 +87,29 @@ do loop 1 [maxloop]
    wait 0.1
 end
 
-caclose x1,x2</code></pre>
+caclose x1,x2
+ </code></pre>
 <p><img src="../fig/ex101.png" /></p>
 <h2 id="epics-ioc-setting-for-the-above-example">EPICS IOC setting for
 the above example</h2>
-<pre><code>$ makeBaseApp.pl -t example test
+<pre><code>
+$ makeBaseApp.pl -t example test
 $ makeBaseApp.pl -i -t example test
 $ make
-$ cd iocBoot/ioctest</code></pre>
+$ cd iocBoot/ioctest
+ </code></pre>
 <p>edit “st.cmd”</p>
-<pre><code>...
+<pre><code>
+...
 #dbLoadTemplate &quot;db/user.substitutions&quot;
 dbLoadRecords  &quot;db/dbExample2.db&quot;, &quot;user=monitor, no=1, scan=1 second&quot;
 dbLoadRecords  &quot;db/dbExample2.db&quot;, &quot;user=monitor, no=2, scan=2 second&quot;
-...</code></pre>
+...
+ </code></pre>
 <p>then run the IOC</p>
-<pre><code>$ chmod +x st.cmd
-$ ./st.cmd</code></pre>
+<pre><code>
+$ chmod +x st.cmd
+$ ./st.cmd
+ </code></pre>
 </body>
 </html>

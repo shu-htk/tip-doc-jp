@@ -41,12 +41,15 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
@@ -54,7 +57,8 @@ line-height: 1.45;
 <body>
 <h1 id="ex20-plot-time-variation-of-increasing-data">ex20: plot time
 variation of increasing data</h1>
-<pre><code>opt (gd:1) ;# draw grid lines
+<pre><code>
+opt (gd:1) ;# draw grid lines
 opt (fl:0) ;# disable flush to avoid screen flickering
 div 1 2
 @ nmax = 1000
@@ -69,7 +73,8 @@ do n 1 [nmax]
  if [n]%100==0; prn [n]; fi
 end
 opt (fl:1) ;# enable flush
-hfit v gaus (lc:green cp:0.6,0.9 rc:1)</code></pre>
+hfit v gaus (lc:green cp:0.6,0.9 rc:1)
+ </code></pre>
 <p><img src="../fig/ex20.png" /></p>
 </body>
 </html>

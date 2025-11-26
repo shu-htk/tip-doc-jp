@@ -41,12 +41,15 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
@@ -54,7 +57,8 @@ line-height: 1.45;
 <body>
 <h1 id="ex13b-plot-3d-meshed-surface-by-some-functions-part.2">ex13b:
 Plot 3D meshed surface by some functions (part.2)</h1>
-<pre><code>opt (ts:0.9 gd:1 al:50 az:30)
+<pre><code>
+opt (ts:0.9 gd:1 al:50 az:30)
 
 set x = range(32,-3.2,3.2)
 set y = range(30,-3,3)
@@ -71,7 +75,8 @@ end
 
 div 1 16                      ;# divide very narrow area
 box 0 1 0 1 (lw:0 bp:9)       ;# make null box at center position (bp:9)
-text 0 0.5 &quot;[expr4]&quot; (ts:2.45) ;# draw long text for the title of expr4</code></pre>
+text 0 0.5 &quot;[expr4]&quot; (ts:2.45) ;# draw long text for the title of expr4
+ </code></pre>
 <p><img src="../fig/ex13b.png" /></p>
 </body>
 </html>

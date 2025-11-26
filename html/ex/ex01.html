@@ -41,12 +41,15 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
@@ -54,7 +57,8 @@ line-height: 1.45;
 <body>
 <h1 id="ex01-plot-data-with-error-bars-and-fitting">ex01: Plot data with
 error-bars and fitting</h1>
-<pre><code>title &quot;Plot data with error-bars and fitting&quot;
+<pre><code>
+title &quot;Plot data with error-bars and fitting&quot;
 set x = range(10,1,10)
 set y = {2,3,5,7,9,10,11,12,14,15}
 set ex = {0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2}
@@ -65,7 +69,8 @@ plot x y (lw:0 st:arc sc:blue ss:0.8 xt:1 yt:2)
 xerr x y ex
 yerr x y ey
 fbox 0.03 0.3 0.73 0.93 (rc:1 ft:solid fc:white)
-fit x y lin (cp:0.05,0.9 rc:1 ts:0.8 lc:green)</code></pre>
+fit x y lin (cp:0.05,0.9 rc:1 ts:0.8 lc:green)
+ </code></pre>
 <p><img src="../fig/ex01.png" /></p>
 </body>
 </html>

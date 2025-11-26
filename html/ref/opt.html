@@ -41,12 +41,15 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
@@ -54,7 +57,8 @@ line-height: 1.45;
 <body>
 <h1 id="opt">opt</h1>
 <h2 id="usage">usage</h2>
-<pre><code>tip&gt; opt
+<pre><code>
+tip&gt; opt
 usage: opt (item1:value1 item2:value2 ...)
      : opt item1 item2 ...
      : opt color|line|symbol|fill|reset
@@ -67,14 +71,16 @@ set or show the global options
   line(l)   : show list of the line-style names
   symbol(s) : show list of the symbol names
   fill(f)   : show list of the fill-area-style names
-  reset     : set the default value for all items</code></pre>
+  reset     : set the default value for all items
+ </code></pre>
 <p><strong>note)</strong><br />
 &gt; option’s tag and it’s argument is separated by ‘:’ with no
 spaces.</p>
 <h2 id="global-option-and-local-option">global option and local
 option</h2>
 <p>see the following example how the global and local option work.</p>
-<pre><code>tip&gt; opt (lc:red)       ;# set the global line color red
+<pre><code>
+tip&gt; opt (lc:red)       ;# set the global line color red
 tip&gt; plot x y           ;# the line color is red
 tip&gt; plot x y (lc:blue) ;# the line color is blue
 tip&gt; plot x y           ;# the line color is red
@@ -84,11 +90,13 @@ lc: line color : [red]
 
 tip&gt; opt reset           ;# reset global options
 tip&gt; opt lc
-lc: line color : [black] ;# default color</code></pre>
+lc: line color : [black] ;# default color
+ </code></pre>
 <h2 id="list-of-options-tags-descriptions-and-their-default-values">list
 of options tags, descriptions and their default values</h2>
 <p>conventionally option’s tag is “2-letters”.</p>
-<pre><code>tip&gt; opt *
+<pre><code>
+tip&gt; opt *
 ae: arrow edge(0=non,1=end,2=begin,3=both): [0]
 al: altitude: [45]
 az: azimuth: [45]
@@ -148,6 +156,7 @@ yt: y-tick interval: [0]
 yr: y-axis range: [0,0]
 zl: z-axis label: []
 zm: z margin factor: [0.1]
-zr: z-axis range: [0,0]</code></pre>
+zr: z-axis range: [0,0]
+ </code></pre>
 </body>
 </html>

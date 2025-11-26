@@ -41,26 +41,32 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="stat">stat</h1>
-<pre><code>tip&gt; stat
+<pre><code>
+tip&gt; stat
 usage: stat v [(opt)]
  make the statistics information of data v.
  the macro variables [v_max] [v_min] [v_mean] [v_rms]
  and [v_entry] are created.
- if option &#39;cp:&#39; is specified they are drawn in the current graph.</code></pre>
+ if option &#39;cp:&#39; is specified they are drawn in the current graph.
+ </code></pre>
 <p>example</p>
-<pre><code>tip&gt; @ sigma=3
+<pre><code>
+tip&gt; @ sigma=3
 tip&gt; @ mean=5
 tip&gt; set x=random(10000,gaus,[sigma],[mean])
 
@@ -77,7 +83,8 @@ x_entry : number [10000]
 x_max : number [16.643976249]
 x_mean : number [4.9920299184]
 x_min : number [-6.438606022]
-x_rms : number [2.9849657177]</code></pre>
+x_rms : number [2.9849657177]
+ </code></pre>
 <p>for more example, see <a href="../ex/ex19.html">ex19</a></p>
 </body>
 </html>

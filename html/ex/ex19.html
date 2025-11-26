@@ -41,12 +41,15 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
@@ -54,7 +57,8 @@ line-height: 1.45;
 <body>
 <h1 id="ex19-plot-moving-averaged-data">ex19: Plot moving averaged
 data</h1>
-<pre><code>opt (gd:1)
+<pre><code>
+opt (gd:1)
 
 set x = random(10000,gaus,10,5)
 
@@ -70,7 +74,8 @@ stat x_m10 (cp:0.02,0.9 rc:1)
 
 plot x (yr:-30,30 mv:100 tl:&quot;Moving Average 100&quot; yt:10 yn:2)
 hplot x_m100 (xr:-30,30 tl:&quot;Histgram of Mov.Ave. 100 of x&quot; xt:5)
-stat x_m100 (cp:0.02,0.9 rc:1)</code></pre>
+stat x_m100 (cp:0.02,0.9 rc:1)
+ </code></pre>
 <p><img src="../fig/ex19.png" /></p>
 </body>
 </html>

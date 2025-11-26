@@ -41,12 +41,15 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
@@ -54,7 +57,8 @@ line-height: 1.45;
 <body>
 <h1 id="ex18-plot-iso-time-format-data-of-very-narrow-interval">ex18:
 Plot ISO-time-format data of very narrow interval</h1>
-<pre><code>opt (gd:1 ts:0.9)
+<pre><code>
+opt (gd:1 ts:0.9)
 
 @ n = 4000
 @ ts1 = &quot;09:32:10.0&quot;   ;# string of the start time (local time)
@@ -85,7 +89,8 @@ plot sec v (cc:&quot;[cc]&quot; st:star xt:0.01 bp:5)
 title &quot;Frequency-domain&quot;
 xlab &quot;Frequency (Hz)&quot;; ylab &quot;Amplitude&quot;
 fplot sec v (fw:bh xr:74,82 xt:1 st:star bp:6)
-ffit v gaus (fr:76.2,77.8 cp:0.5,0.9 rc:1 lc:green)</code></pre>
+ffit v gaus (fr:76.2,77.8 cp:0.5,0.9 rc:1 lc:green)
+ </code></pre>
 <p><img src="../fig/ex18.png" /></p>
 </body>
 </html>

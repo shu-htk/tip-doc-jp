@@ -41,21 +41,26 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="hplot2">hplot2</h1>
-<pre><code>tip&gt; hplot2
+<pre><code>
+tip&gt; hplot2
 usage: hplot2 x y [(opt)]
- make and plot the 2D-histogram of data x and y</code></pre>
+ make and plot the 2D-histogram of data x and y
+ </code></pre>
 <h2 id="option">option</h2>
 <h3 id="option-with-single-argument">option with single argument</h3>
 <ul>
@@ -141,7 +146,8 @@ calculated)</li>
 <li><code>cc:</code> cut condition (see <a href="cut.html">cut</a>)</li>
 </ul>
 <p>example</p>
-<pre><code>tip&gt; rm *
+<pre><code>
+tip&gt; rm *
 tip&gt; set x=random(10000,gaus)
 tip&gt; set y=random(10000,gaus)
 tip&gt; hplot2 x y (nx:20 ny:20)
@@ -155,7 +161,8 @@ tip&gt; opt (xm:0 ym:0)
 tip&gt; mplot x_mx y_my x_y_mz (mt:mesh1)    ;# the same as hplot2 x y (mt:mesh1)
 tip&gt; mplot x_mx y_my x_y_mz (mt:mesh2)    ;# the same as hplot2 x y (mt:mesh2)
 tip&gt; mplot x_mx y_my x_y_mz (mt:cont1)    ;# the same as hplot2 x y (mt:cont1)
-tip&gt; mplot x_mx y_my x_y_mz (mt:cont2)    ;# the same as hplot2 x y (mt:cont2)</code></pre>
+tip&gt; mplot x_mx y_my x_y_mz (mt:cont2)    ;# the same as hplot2 x y (mt:cont2)
+ </code></pre>
 <p>see also <a href="mplot.html">mplot</a></p>
 <p>for more example, see <a href="../ex/ex11.html">ex11</a>, <a href="../ex/ex12.html">ex12</a></p>
 </body>

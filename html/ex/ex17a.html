@@ -41,12 +41,15 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
@@ -54,7 +57,8 @@ line-height: 1.45;
 <body>
 <h1 id="ex17a-plot-iso-time-format-data-with-time-axis-format">ex17a:
 Plot ISO-time-format data with time-axis format</h1>
-<pre><code>opt (gd:1)
+<pre><code>
+opt (gd:1)
 div 1 3
 
 @ n = 5000 ;# number of data
@@ -77,7 +81,8 @@ plot t v (cc:&quot;ts==2022-*-*&quot; tf:&quot;%Y-%m-%d&quot;) ;# choose 2022 by
 cut t,v &quot;ts==2022-04-*&quot;     ;# choose 2022-4 by the time string
 @ day_sec = 24*3600
 title &quot;cut by &#39;ts==2022-04-*&#39; (x-axis is time format)&quot;
-plot t_cut v_cut (tf:&quot;%d&quot; xt:[day_sec]  xn:1 st:star)</code></pre>
+plot t_cut v_cut (tf:&quot;%d&quot; xt:[day_sec]  xn:1 st:star)
+ </code></pre>
 <p><img src="../fig/ex17a.png" /></p>
 </body>
 </html>

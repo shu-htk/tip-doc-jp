@@ -41,20 +41,25 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="calc">calc</h1>
-<pre><code>tip&gt; calc
-usage: calc [expression]</code></pre>
+<pre><code>
+tip&gt; calc
+usage: calc [expression]
+ </code></pre>
 <p>this command show the result of calculation expression</p>
 <p>where calculation expression is appear in</p>
 <ul>
@@ -89,7 +94,8 @@ usage: calc [expression]</code></pre>
 </tr>
 </tbody>
 </table>
-<pre><code>tip&gt; calc +3
+<pre><code>
+tip&gt; calc +3
 [+3] -&gt; [3]
 
 tip&gt; calc 2 * +3
@@ -99,7 +105,8 @@ tip&gt; calc -3
 [-3] -&gt; [-3]
 
 tip&gt; calc 2 * -3
-[2 * -3] -&gt; [-6]</code></pre>
+[2 * -3] -&gt; [-6]
+ </code></pre>
 <ul>
 <li><strong>binary operator</strong></li>
 </ul>
@@ -139,7 +146,8 @@ tip&gt; calc 2 * -3
 </tr>
 </tbody>
 </table>
-<pre><code>tip&gt; @ x=2
+<pre><code>
+tip&gt; @ x=2
 tip&gt; @ y=3
 
 tip&gt; calc [x]+[y]
@@ -158,7 +166,8 @@ tip&gt; calc [x]+[y]
 [2+3] -&gt; [5]
 
 tip&gt; calc [x]-[y]
-[2-3] -&gt; [-1]</code></pre>
+[2-3] -&gt; [-1]
+ </code></pre>
 <h2 id="mathematical-functions">mathematical functions</h2>
 <p><code>abs</code>,<code>sqrt</code>,<code>exp</code>,<code>log</code>,<code>log10</code>,<code>cos</code>,<code>acos</code>,<code>sin</code>,<code>asin</code>,<code>tan</code>,<code>atan</code>,<code>cosh</code>,<code>sinh</code>,<code>tanh</code>,<code>floor</code>,<code>pow</code>,<code>atan2</code></p>
 <p>see <a href="../ex/ex02.html">ex02: Plot mathematical

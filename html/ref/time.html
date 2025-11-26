@@ -41,19 +41,23 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="time">time</h1>
-<pre><code>tip&gt; time
+<pre><code>
+tip&gt; time
 usage: set vn = time([vn|vs][,unit])
 usage: set vs = time([vn|vs],str)
  convert the time data
@@ -71,7 +75,8 @@ usage: set vs = time([vn|vs],str)
    usec  : return micro-seconds
    str   : return ISO time format string (local time)
                   like &quot;Year-Mon-Day Hour:Min:Sec[.Usec]&quot;
- if unit is not specified, it returns unix-epoch time.</code></pre>
+ if unit is not specified, it returns unix-epoch time.
+ </code></pre>
 <h2 id="option">option</h2>
 <h3 id="option-with-quoted-argument-by">option with quoted argument by
 “”</h3>
@@ -86,7 +91,8 @@ of <code>td:</code> is 3 characters, “ABC”<br />
 <code>td:&quot;-T:&quot;</code>, &gt; but it is defaulted to <code>td:&quot;- :&quot;</code>
 in the tip interpreter.</p>
 <p>example</p>
-<pre><code>tip&gt; set tn=time(now)
+<pre><code>
+tip&gt; set tn=time(now)
 tip&gt; set ts=time(tn,str)
 tip&gt; cat ts
 ts : data(str) :  2025-11-05 12:26:53.353887
@@ -97,21 +103,25 @@ ts : data(str) :  2025-11-05T12:26:53.353887
 
 tip&gt; set ts=time(tn,str) (td:&quot;/ :&quot;)   ;# using / as the delimiter of date
 tip&gt; cat ts
-ts : data(str) :  2025/11/05 12:26:53.353887</code></pre>
+ts : data(str) :  2025/11/05 12:26:53.353887
+ </code></pre>
 <h2 id="convert-unix-epoch-time-to-time-string">convert unix epoch time
 to time string</h2>
 <p>example</p>
-<pre><code>tip&gt; set vn=time(now)    ;# convert current local time to unix epoch time
+<pre><code>
+tip&gt; set vn=time(now)    ;# convert current local time to unix epoch time
 tip&gt; cat vn
 vn : data(num) :  1762073282
 
 tip&gt; set vs=time(vn,str) ;# convert unix epoch time to time string
 tip&gt; cat vs
-vs : data(str) :  2025-11-02 08:48:13.322786</code></pre>
+vs : data(str) :  2025-11-02 08:48:13.322786
+ </code></pre>
 <h2 id="convert-time-string-to-unix-epoch-time">convert time string to
 unix epoch time</h2>
 <p>example</p>
-<pre><code>tip&gt; set vs=time(now,str)  ;# convert current local time to time string
+<pre><code>
+tip&gt; set vs=time(now,str)  ;# convert current local time to time string
 tip&gt; cat vs
 vs : data(str) :  2025-11-02 08:48:13.322786
 
@@ -121,7 +131,8 @@ vn : data(num) :  1762073282
 
 tip&gt; set vn=time(vs)   ;# argument utime can be omitted
 tip&gt; cat vn
-vn : data(num) :  1762073282</code></pre>
+vn : data(num) :  1762073282
+ </code></pre>
 <h2 id="convert-to-year-month-day-hour-min-sec-usec">convert to year,
 month, day, hour, min, sec, usec</h2>
 <table>
@@ -180,7 +191,8 @@ month, day, hour, min, sec, usec</h2>
 year is factored in)</p>
 </blockquote>
 <p>example</p>
-<pre><code>tip&gt; set vn=time(now)
+<pre><code>
+tip&gt; set vn=time(now)
 tip&gt; set year=time(vn,year)
 tip&gt; set mon=time(vn,mon)
 tip&gt; set day=time(vn,day)
@@ -200,14 +212,16 @@ usec : data(num) :  322786.09276
 
 tip&gt; set vs=time(vn,str)
 tip&gt; cat vs
-vs : data(str) :  2025-11-02 08:48:13.322786</code></pre>
+vs : data(str) :  2025-11-02 08:48:13.322786
+ </code></pre>
 <h2 id="time-function-for-the-macro-variable">time() function for the
 macro variable</h2>
 <blockquote>
 <p>time() function is also available to set macro variable.</p>
 </blockquote>
 <p>example</p>
-<pre><code>tip&gt; @ n=time(now)
+<pre><code>
+tip&gt; @ n=time(now)
 tip&gt; @ year=time([n],year)
 tip&gt; @ mon=time([n],mon)
 tip&gt; @ day=time([n],day)
@@ -227,7 +241,8 @@ usec : number [527999.609]
 
 tip&gt; @ s=time([n],str)
 tip&gt; ls s
-s : string [2025-11-05 13:18:00.500000]</code></pre>
+s : string [2025-11-05 13:18:00.500000]
+ </code></pre>
 <h2 id="omitting-datetime-in-the-time-format">omitting date/time in the
 time format</h2>
 <blockquote>
@@ -235,7 +250,8 @@ time format</h2>
 omitting date, it is complemented with current date</p>
 </blockquote>
 <p>example</p>
-<pre><code>tip&gt; @ t0=time(now)           ;# current time
+<pre><code>
+tip&gt; @ t0=time(now)           ;# current time
 tip&gt; @ t1=time(&quot;2020-02-03&quot;)  ;# input time string without time
 tip&gt; @ t2=time(&quot;13:26:49&quot;)    ;# input time string without date
 tip&gt;
@@ -246,11 +262,13 @@ tip&gt;
 tip&gt; ls ts?
 ts0 : string [2025-11-17 14:35:59.700000] ;# current time
 ts1 : string [2020-02-03 00:00:00.000000] ;# time is &quot;00:00:00.0&quot;
-ts2 : string [2025-11-17 13:26:49.000000] ;# date is taken from the current time </code></pre>
+ts2 : string [2025-11-17 13:26:49.000000] ;# date is taken from the current time 
+ </code></pre>
 <h2 id="making-data-array-of-the-time-string">making data array of the
 time string</h2>
 <p>example</p>
-<pre><code>tip&gt; @ t1 = time(&quot;1999-12-31&quot;)    ;# convert to unix epoch time
+<pre><code>
+tip&gt; @ t1 = time(&quot;1999-12-31&quot;)    ;# convert to unix epoch time
 tip&gt; @ t2 = time(&quot;2000-01-02&quot;)    ;# convert to unix epoch time
 tip&gt; set t = range(13,[t1],[t2])  ;# make data array of unix epoch time
 tip&gt; set ts = time(t,str)         ;# convert to data array of time string
@@ -268,7 +286,8 @@ ts : data(str) :
 2000-01-01 12:00:00.000000
 2000-01-01 16:00:00.000000
 2000-01-01 20:00:00.000000
-2000-01-02 00:00:00.000000</code></pre>
+2000-01-02 00:00:00.000000
+ </code></pre>
 <p>for more example, see <a href="../ex/ex17a.html">ex17a</a>, <a href="../ex/ex17b.html">ex17b</a>, <a href="../ex/ex18.html">ex18</a></p>
 </body>
 </html>

@@ -41,24 +41,30 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="sys">sys</h1>
-<pre><code>tip&gt; sys
+<pre><code>
+tip&gt; sys
 usage: sys [command]
- execute system command</code></pre>
+ execute system command
+ </code></pre>
 <p><code>sys</code> execute shell command in the tip interpreter</p>
 <p>example</p>
-<pre><code>tip&gt; sys ls -l README.html
+<pre><code>
+tip&gt; sys ls -l README.html
 -rw-r--r-- 1 monitor monitor 900 Nov  7 07:27 README.html
 
 tip&gt; sys head README.html
@@ -70,6 +76,7 @@ It is written in C++ and depends on the library of
 and [GNU readline](https://cgit.git.savannah.gnu.org/cgit/readline.git).
 Basically it works on Linux or other Unix-like OS.
 Although it has fewer functions than existing plotting tools,
-it just aims ease of use over versatility.</code></pre>
+it just aims ease of use over versatility.
+ </code></pre>
 </body>
 </html>

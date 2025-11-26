@@ -41,19 +41,23 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="random">random</h1>
-<pre><code>tip&gt; random
+<pre><code>
+tip&gt; random
 usage: set v = random(N,uni[,x0,x1]) [(opt)]
        set v = random(N,gaus[,sgm,mean]) [(opt)]
        set v = random(N,exp[,tau]) [(opt)]
@@ -65,7 +69,8 @@ usage: set v = random(N,uni[,x0,x1]) [(opt)]
   sd:N     : set integer value N
   sd:utime : set unix time(sec)
   sd:clock : set clock(nsec) (this is default)
-  sd:dev   : set non-deterministic device (c++11)</code></pre>
+  sd:dev   : set non-deterministic device (c++11)
+ </code></pre>
 <h2 id="option">option</h2>
 <ul>
 <li><code>sd:</code> set integer value as a random seed<br />

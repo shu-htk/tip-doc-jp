@@ -41,12 +41,15 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
@@ -54,7 +57,8 @@ line-height: 1.45;
 <body>
 <h1 id="ex21-absolute-coordinate-and-relative-coordinate">ex21: Absolute
 coordinate and Relative coordinate</h1>
-<pre><code>opt (gd:1 lc:blue st:cr2 sc:red ft:solid fc:wheat ts:0.8)
+<pre><code>
+opt (gd:1 lc:blue st:cr2 sc:red ft:solid fc:wheat ts:0.8)
 
 # in default absolute coordinate
 
@@ -90,7 +94,8 @@ for scale (lin log)
  text 0.1  0.85 &quot;: [expr]&quot;
  arc  0.5 0.5 0.1
  line 0.1 0.9 0.1 0.9 (ae:1)
-end</code></pre>
+end
+ </code></pre>
 <p><img src="../fig/ex21.png" /></p>
 </body>
 </html>

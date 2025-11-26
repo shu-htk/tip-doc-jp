@@ -41,19 +41,23 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="fplot">fplot</h1>
-<pre><code>tip&gt; fplot
+<pre><code>
+tip&gt; fplot
 usage: fplot [t] v [(opt)]
  do FFT with the time data t and the amplitude v.
  it is created the frequency data v_fx and the power spectrum v_fy.
@@ -67,7 +71,8 @@ options:
   hn  : Hann
   hm  : Hamming
   bk  : Blackman
-  bh  : Blackman-Haris</code></pre>
+  bh  : Blackman-Haris
+ </code></pre>
 <h2 id="option">option</h2>
 <h3 id="option-with-single-argument">option with single argument</h3>
 <ul>
@@ -125,7 +130,8 @@ calculated)</li>
 <li><code>cc:</code> cut condition (see <a href="cut.html">cut</a>)</li>
 </ul>
 <p>example</p>
-<pre><code>tip&gt; @ ndata=1000
+<pre><code>
+tip&gt; @ ndata=1000
 tip&gt; @ t0=0
 tip&gt; @ t1=10
 tip&gt; set t=range([ndata],[t0],[t1])
@@ -145,7 +151,8 @@ tip&gt; ls *_fx,*_fy
 v_fx : data(num) : size=512  ;# created data of frequency
 v_fy : data(num) : size=512  ;# created data of power spectrum
 
-tip&gt; plot v_fx v_fy            ;# the same as fplot t v</code></pre>
+tip&gt; plot v_fx v_fy            ;# the same as fplot t v
+ </code></pre>
 <p>for example, see <a href="../ex/ex08.html">ex08</a>, <a href="../ex/ex18.html">ex18</a></p>
 </body>
 </html>

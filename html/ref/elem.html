@@ -41,25 +41,31 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="elem">elem</h1>
-<pre><code>tip&gt; elem
+<pre><code>
+tip&gt; elem
 usage: elem x = v(N)
  copy Nth element of data v to the macro variable x.
- (N begin from 1)</code></pre>
+ (N begin from 1)
+ </code></pre>
 <p>see also <a href="cat.html">cat</a></p>
 <p>example</p>
-<pre><code>tip&gt; set x=range(5, 0.1, 0.5)
+<pre><code>
+tip&gt; set x=range(5, 0.1, 0.5)
 tip&gt; cat x (fs:&quot;\n&quot;)
 x : data(num) :
 0.1
@@ -79,6 +85,7 @@ element of x(1) is 0.1
 element of x(2) is 0.2
 element of x(3) is 0.3
 element of x(4) is 0.4
-element of x(5) is 0.5</code></pre>
+element of x(5) is 0.5
+ </code></pre>
 </body>
 </html>

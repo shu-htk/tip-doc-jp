@@ -41,33 +41,41 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="section">@</h1>
-<pre><code>tip&gt; @
+<pre><code>
+tip&gt; @
 usage: @ x [=|+=|-=|*=|/=|%=] expression
 usage: @ t = time(s[,unit])
  set the expression value to the macro variable x
- convert ISO time string to unix epoch time and vice versa</code></pre>
+ convert ISO time string to unix epoch time and vice versa
+ </code></pre>
 <p>see <a href="calc.html">calc</a> to learn how expression is
 calulated</p>
 <h2 id="spaces-between-arguments">spaces between arguments</h2>
-<pre><code>tip&gt; @ x = 1 + 2 ;# OK
+<pre><code>
+tip&gt; @ x = 1 + 2 ;# OK
 tip&gt; @x = 1 + 2  ;# NG you should put space between @ and x
 tip&gt; @ x= 1 + 2  ;# OK
 tip&gt; @ x=1 + 2   ;# OK
-tip&gt; @ x=1+2     ;# OK</code></pre>
+tip&gt; @ x=1+2     ;# OK
+ </code></pre>
 <h2 id="numerical-macro-variables">numerical macro variables</h2>
-<pre><code>tip&gt; @ pi=3.14159265
+<pre><code>
+tip&gt; @ pi=3.14159265
 tip&gt; @ x=sin([pi]/2)
 tip&gt; ls *
 pi : number [3.14159265]
@@ -78,11 +86,13 @@ sin(3.14159265/2)=1
 tip&gt;
 tip&gt; fmt &quot;%.2f&quot;  ;# set format of [pi] and [x]
 tip&gt; prn sin([pi]/2)=[x]
-sin(3.14/2)=1.00</code></pre>
+sin(3.14/2)=1.00
+ </code></pre>
 <p>see also <a href="print.html">print</a> and <a href="fmt.html">fmt</a></p>
 <p>using operator <code>+=</code> <code>-=</code> <code>*=</code>
 <code>/=</code> <code>%=</code></p>
-<pre><code>tip&gt; @ x = 1.23
+<pre><code>
+tip&gt; @ x = 1.23
 tip&gt; prn [x]
 1.23
 tip&gt; @ x += 1/10  ;# 1/10 is calculated to 0.1
@@ -99,41 +109,51 @@ tip&gt; prn [x]
 0.22
 tip&gt; @ x %= 0.1  ;# x = fmod(x,0.1)
 tip&gt; prn [x]
-0.02</code></pre>
+0.02
+ </code></pre>
 <h2 id="string-macro-variable">string macro variable</h2>
 <p>if expression is not starting from digit it is defined as string</p>
-<pre><code>tip&gt; @ a = Hello
+<pre><code>
+tip&gt; @ a = Hello
 tip&gt; @ b = World!
 tip&gt; @ c = [a] [b]
 tip&gt; ls *
 a : string [Hello]
 b : string [World!]
-c : string [Hello World!]</code></pre>
+c : string [Hello World!]
+ </code></pre>
 <h2 id="treatment-of-the-quotations">treatment of the quotations</h2>
 <ul>
 <li><strong>quotations at both edge of the string are
 removed</strong></li>
 </ul>
-<pre><code>tip&gt; @ s = &quot;a b c d&quot;
+<pre><code>
+tip&gt; @ s = &quot;a b c d&quot;
 tip&gt; ls s
-s : string [a b c d]</code></pre>
+s : string [a b c d]
+ </code></pre>
 <ul>
 <li><strong>quotations among the string are not removed</strong></li>
 </ul>
-<pre><code>tip&gt; @ s = a &quot;b c&quot; d
+<pre><code>
+tip&gt; @ s = a &quot;b c&quot; d
 tip&gt; ls s
-s : string [a &quot;b c&quot; d]</code></pre>
+s : string [a &quot;b c&quot; d]
+ </code></pre>
 <h2 id="ternary-operator">ternary operator</h2>
 <p><strong>note)</strong> &gt; ternary operator can not be nested</p>
-<pre><code>tip&gt; @ x=7
+<pre><code>
+tip&gt; @ x=7
 tip&gt; @ size = [x]&gt;5 ? L : S          ;# this is OK
 tip&gt; ls size
 size : string [L]
 tip&gt; 
 tip&gt; @ size = [x]&gt;4 ? ([x]&gt;7 ? L : M ) : S  ;# NG it can&#39;t be nested
-Var::parse_ternary(): operator lack of args</code></pre>
+Var::parse_ternary(): operator lack of args
+ </code></pre>
 <h2 id="some-other-syntax">some other syntax</h2>
-<pre><code>tip&gt; @ a = &quot;1&quot;  ;# enclosing the expr by quotations, it is treated as string
+<pre><code>
+tip&gt; @ a = &quot;1&quot;  ;# enclosing the expr by quotations, it is treated as string
 tip&gt; ls a
 a : string [1]
 tip&gt;
@@ -154,24 +174,29 @@ invalid operator of string
 tip&gt;
 tip&gt; @ m = 1.2kg  ;# this is number (&quot;kg&quot; is removed)
 tip&gt; ls m
-m : number [1.2]</code></pre>
+m : number [1.2]
+ </code></pre>
 <p>hacks to put the metric prefix using macro variable</p>
-<pre><code>tip&gt; @ kg=e3
+<pre><code>
+tip&gt; @ kg=e3
 tip&gt; @ m=1.2[kg]        ;# 1.2[kg] is replaced to 1.2e3
 tip&gt; prn mass=[m][g]    ;# [g] is not replaced since it is not defined
-mass=1200[g]</code></pre>
+mass=1200[g]
+ </code></pre>
 <h2 id="convert-iso-time-string-to-unix-epoch-time-and-vice-versa">convert
 ISO time string to unix epoch time and vice versa</h2>
 <blockquote>
 <p><a href="time.html">time</a>() is a function exclusive to the <a href="set.html">set</a> and <a href="var.html">@</a> command and cannot
 be used in the expressions.</p>
 </blockquote>
-<pre><code>tip&gt; @ t=time(&quot;2001-02-03 09:12:37.0&quot;) ;# ISO-time-string to unix-epoch-time
+<pre><code>
+tip&gt; @ t=time(&quot;2001-02-03 09:12:37.0&quot;) ;# ISO-time-string to unix-epoch-time
 tip&gt; ls t
 t : number [981191557]
 
 tip&gt; @ ts=time([t],str)                ;# unix-epoch-time to ISO-time-string
 tip&gt; ls ts
-ts : string [2001-02-03 09:12:37.000000]</code></pre>
+ts : string [2001-02-03 09:12:37.000000]
+ </code></pre>
 </body>
 </html>

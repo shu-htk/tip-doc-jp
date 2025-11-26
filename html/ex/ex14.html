@@ -41,12 +41,15 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
@@ -54,7 +57,8 @@ line-height: 1.45;
 <body>
 <h1 id="ex14-making-mesh-arrays-and-write-and-read-it">ex14: Making mesh
 arrays and write and read it</h1>
-<pre><code>set x = {0,1,2,3}
+<pre><code>
+set x = {0,1,2,3}
 set y = {0,10,20}
 mset z = {{1,2,3},{4,5,6},{7,8,9},{10,11,12}}
 
@@ -75,7 +79,8 @@ for mt (cont1 cont2)
 end
 
 mwrite x,y,z mesh.dat ; # saving mesh data
-mread a,b,c mesh.dat  ; # loading saved mesh data</code></pre>
+mread a,b,c mesh.dat  ; # loading saved mesh data
+ </code></pre>
 <p><img src="../fig/ex14.png" /></p>
 </body>
 </html>

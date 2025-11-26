@@ -41,29 +41,35 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="tfmt">tfmt</h1>
-<pre><code>tip&gt; tfmt
+<pre><code>
+tip&gt; tfmt
 usage: tfmt &quot;time format&quot;
        tfmt reset
  set x-axis time format.
  equivalent to &#39;opt (tf:&quot;time format&quot;)&#39;
  tags in the format:
          %Y(year), %m(month), %d(day), %H(hour), %M(min), %S(sec)
- reset : x-axis is reset to normal format.</code></pre>
+ reset : x-axis is reset to normal format.
+ </code></pre>
 <p>this command is equivalent to <code>opt (tf:&quot;time format&quot;)</code></p>
 <p>example</p>
-<pre><code>opt (td:&quot;/ :&quot;)  ;# set time delimiters of ISO time format
+<pre><code>
+opt (td:&quot;/ :&quot;)  ;# set time delimiters of ISO time format
 
 @ T1=time(&quot;2001/01/01 00:00:00&quot;)
 @ T2=time(&quot;2001/01/02 00:00:00&quot;)
@@ -80,6 +86,7 @@ tfmt &quot;%m/%d %H:%M&quot;
 plot t12 v12 (xl:&quot;month/day hour:min&quot;)
 
 tfmt &quot;%Y/%m/%d&quot;
-plot t13 v13 (xl:&quot;year/month/day&quot;)</code></pre>
+plot t13 v13 (xl:&quot;year/month/day&quot;)
+ </code></pre>
 </body>
 </html>

@@ -41,22 +41,27 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="plot3">plot3</h1>
-<pre><code>tip&gt; plot3
+<pre><code>
+tip&gt; plot3
 usage: plot3 x y z [(opt)]
  plot the 3d-graph of data x, y and z.
- those three data should be the same size.</code></pre>
+ those three data should be the same size.
+ </code></pre>
 <h2 id="option">option</h2>
 <h3 id="option-with-single-argument">option with single argument</h3>
 <ul>
@@ -111,7 +116,8 @@ calculated)</li>
 <h2 id="set-viewing-angle-altitude-azimuth">set viewing angle (altitude
 / azimuth)</h2>
 <p>example</p>
-<pre><code>set t=range(100,0,30)
+<pre><code>
+set t=range(100,0,30)
 set x=cos(t)
 set y=sin(t)
 
@@ -129,7 +135,8 @@ wait 0
 do az 10 50    ;# rotate azimuth angle 10 - 50 [deg]
   plot3 x y t (az:[az])
   wait 0.01
-end</code></pre>
+end
+ </code></pre>
 <p>see also <a href="../ex/ex10.html">ex10</a></p>
 </body>
 </html>

@@ -41,19 +41,23 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="cacheck">cacheck</h1>
-<pre><code>usage: cacheck v1,v2,...
+<pre><code>
+usage: cacheck v1,v2,...
  check if EPICS records connected to data v1,v2,... are updated.
  (v1,v2,... should be defeined by &#39;camon&#39;)
  also the following macro variables are created.
@@ -62,7 +66,8 @@ macro variables:
   v1.update : 1 if v1 updated, 0 if not updated
   v2        : the 1st element of data v2
   v2.update : 1 if v2 updated, 0 if not updated
-  ... </code></pre>
+  ... 
+ </code></pre>
 <p>Check if the EPICS_record is updated.</p>
 <p>If it is updated the following variables are set.</p>
 <ul>

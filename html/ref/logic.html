@@ -41,20 +41,25 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="logic">logic</h1>
-<pre><code>tip&gt; logic
-usage: logic [expression]</code></pre>
+<pre><code>
+tip&gt; logic
+usage: logic [expression]
+ </code></pre>
 <p>this command show the result of logical expression</p>
 <p>where logical expression is appear in</p>
 <ul>
@@ -117,7 +122,8 @@ usage: logic [expression]</code></pre>
 </tbody>
 </table>
 <p>example</p>
-<pre><code>tip&gt; logic 1&lt;2
+<pre><code>
+tip&gt; logic 1&lt;2
 [1&lt;2] -&gt; num_logic -&gt; [1]
 
 tip&gt; logic 1==2 &amp;&amp; 3==3     ;# standard expr
@@ -133,7 +139,8 @@ tip&gt; logic A=B
 [A=B] -&gt; str_logic -&gt; [0]
 
 tip&gt; logic A=B | B=B
-[A=B | B=B] -&gt; str_logic -&gt; [1]</code></pre>
+[A=B | B=B] -&gt; str_logic -&gt; [1]
+ </code></pre>
 <h2 id="extended-logical-expression">Extended Logical Expression</h2>
 <table>
 <thead>
@@ -183,14 +190,16 @@ tip&gt; logic A=B | B=B
 </tbody>
 </table>
 <p>example</p>
-<pre><code>tip&gt; logic 1&lt;2&lt;3&lt;=3     ;# same to 1&lt;2 &amp;&amp; 2&lt;3 &amp;&amp; 3&lt;=3
+<pre><code>
+tip&gt; logic 1&lt;2&lt;3&lt;=3     ;# same to 1&lt;2 &amp;&amp; 2&lt;3 &amp;&amp; 3&lt;=3
 [1&lt;2&lt;3&lt;=3] -&gt; num_logic -&gt; [1]
 
 tip&gt; logic 1&lt;5&lt;3&lt;=3     ;# same to 1&lt;5 &amp;&amp; 5&lt;3 &amp;&amp; 3&lt;=3
 [1&lt;5&lt;3&lt;=3] -&gt; num_logic -&gt; [0]
 
 tip&gt; logic A=A!=B       ;# same to A==A &amp;&amp; A!=B
-[A=A!=B] -&gt; str_logic -&gt; [1]</code></pre>
+[A=A!=B] -&gt; str_logic -&gt; [1]
+ </code></pre>
 <h2 id="wild-card-matching-for-string-logic-only">Wild Card Matching
 (for string logic only)</h2>
 <table>
@@ -225,7 +234,8 @@ right part</strong> of the comparison</p>
 expression</strong><br />
 &gt; actually it is implemented by <code>fnmatch()</code> function</p>
 <p>example</p>
-<pre><code>tip&gt; @ s=ABC
+<pre><code>
+tip&gt; @ s=ABC
 
 tip&gt; logic [s]=A*
 [ABC=A*] -&gt; str_logic -&gt; [1]
@@ -240,7 +250,8 @@ tip&gt; logic [s]=?BC
 [ABC=?BC] -&gt; str_logic -&gt; [1]
 
 tip&gt; logic [s]=[A-Z]*
-[ABC=[A-Z]*] -&gt; str_logic -&gt; [1]</code></pre>
+[ABC=[A-Z]*] -&gt; str_logic -&gt; [1]
+ </code></pre>
 <h2 id="list-matching-for-both-of-numerical-and-string-logic">List
 Matching (for both of numerical and string logic)</h2>
 <ul>
@@ -297,7 +308,8 @@ the right part</strong> of the comparison</p>
 <p><strong>note 4)</strong> &gt; the list of exprs <strong>can not be
 concatenate</strong> to the other exprs</p>
 <p>example</p>
-<pre><code>tip&gt; logic 6 = {1+2, 2*3}
+<pre><code>
+tip&gt; logic 6 = {1+2, 2*3}
 [6 = {1+2, 2*3}] -&gt; num_logic -&gt; [1]
 
 tip&gt; logic {1+2, 2*3} = 6
@@ -307,6 +319,7 @@ tip&gt; logic abc == {a?, b*, [a-z]??}
 [abc == {a?, b*, [a-z]??}] -&gt; str_logic -&gt; [1]
 
 tip&gt; logic aaabbb = aaa{bbb,ccc}    ;# NG : list can not be concatenate to the other
-[aaabbb = aaa{bbb,ccc}] -&gt; str_logic -&gt; [0]</code></pre>
+[aaabbb = aaa{bbb,ccc}] -&gt; str_logic -&gt; [0]
+ </code></pre>
 </body>
 </html>

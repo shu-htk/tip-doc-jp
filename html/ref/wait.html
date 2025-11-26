@@ -41,30 +41,37 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="wait">wait</h1>
-<pre><code>tip&gt; wait
+<pre><code>
+tip&gt; wait
 usage: wait [t]
  wait t seconds, (t is floating point number)
- if t=0 wait console input</code></pre>
+ if t=0 wait console input
+ </code></pre>
 <p>example to wait console input</p>
-<pre><code>tip&gt; do n 1 10; prn [n]; wait 0; end
+<pre><code>
+tip&gt; do n 1 10; prn [n]; wait 0; end
 1
 &#39;b&#39;:break, others:continue &gt;
 2
 &#39;b&#39;:break, others:continue &gt;
 3
 &#39;b&#39;:break, others:continue &gt; b  ;# break here
-tip&gt; </code></pre>
+tip&gt; 
+ </code></pre>
 </body>
 </html>

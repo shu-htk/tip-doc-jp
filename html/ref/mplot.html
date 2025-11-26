@@ -41,19 +41,23 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="mplot">mplot</h1>
-<pre><code>tip&gt; mplot
+<pre><code>
+tip&gt; mplot
 usage: mplot x y z [(opt)]
  plot the mesh-3d-graph.
  where x is data of size N.
@@ -63,7 +67,8 @@ usage: mplot x y z [(opt)]
   mt:mesh1  plot 3D-mesh with single color.
   mt:mesh2  plot 3D-mesh with gradation color.
   mt:cont1  plot 2D-mesh with gray-scaled contour.
-  mt:cont2  plot 2D-mesh with gradation colored contour.</code></pre>
+  mt:cont2  plot 2D-mesh with gradation colored contour.
+ </code></pre>
 <h2 id="option">option</h2>
 <h3 id="option-with-single-argument">option with single argument</h3>
 <ul>

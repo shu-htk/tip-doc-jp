@@ -41,26 +41,32 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="split">split</h1>
-<pre><code>tip&gt; split
+<pre><code>
+tip&gt; split
 usage: split s [fs]
  split the string macro variable by delomiter fs
  default delimiter is white space
  splitted string variables are created named s1,..,sN
- (N is number of splitted string)</code></pre>
+ (N is number of splitted string)
+ </code></pre>
 <p>exmaple</p>
-<pre><code>tip&gt; @ s = a b c d
+<pre><code>
+tip&gt; @ s = a b c d
 tip&gt; split s          ;# split s by default delimiter (white space)
 tip&gt; ls s*
 s : string [a b c d]
@@ -95,6 +101,7 @@ tip&gt; ls s*
 s : string [a, &quot;b, c&quot;, d]
 s1 : string [a]
 s2 : string [b, c]
-s3 : string [d]</code></pre>
+s3 : string [d]
+ </code></pre>
 </body>
 </html>

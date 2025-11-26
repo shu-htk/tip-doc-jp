@@ -41,27 +41,33 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="if-elif-else-fi">if, elif, else, fi</h1>
-<pre><code>tip&gt; if
-usage: if expr; ...; elif expr; ...; else; ...; fi</code></pre>
+<pre><code>
+tip&gt; if
+usage: if expr; ...; elif expr; ...; else; ...; fi
+ </code></pre>
 <p>conditional branch by evaluating logical expression</p>
 <p>see <a href="logic.html">logic</a> to learn how the logical
 expression evaluated</p>
 <ul>
 <li>example 1</li>
 </ul>
-<pre><code>do n 1 10
+<pre><code>
+do n 1 10
   if [n]&lt;3
     continue
   elif [n]&gt;=8
@@ -69,23 +75,29 @@ expression evaluated</p>
   else
     prn [n]
   fi
-end</code></pre>
+end
+ </code></pre>
 <p>result</p>
-<pre><code>3
+<pre><code>
+3
 4
 5
 6
-7</code></pre>
+7
+ </code></pre>
 <ul>
 <li>example 2</li>
 </ul>
-<pre><code>for c (H e l l o W o r l d)
+<pre><code>
+for c (H e l l o W o r l d)
   pr [c]
   if [c]==[A-Z]; pr  : Capital; fi
   pr \n
-end</code></pre>
+end
+ </code></pre>
 <p>result</p>
-<pre><code>H: Capital
+<pre><code>
+H: Capital
 e
 l
 l
@@ -94,11 +106,13 @@ W: Capital
 o
 r
 l
-d</code></pre>
+d
+ </code></pre>
 <ul>
 <li>example 3</li>
 </ul>
-<pre><code>for name (Greg Anna Ryan Mary Josh)
+<pre><code>
+for name (Greg Anna Ryan Mary Josh)
   pr [name]
   if [name]=={Greg,Ryan,Josh}
     pr  : Boy
@@ -110,12 +124,15 @@ d</code></pre>
     pr  : name begin from &#39;A&#39;
   fi
   pr \n
-end</code></pre>
+end
+ </code></pre>
 <p>result</p>
-<pre><code>Greg: Boy
+<pre><code>
+Greg: Boy
 Anna: Girl: name begin from &#39;A&#39;
 Ryan: Boy
 Mary: Girl
-Josh: Boy</code></pre>
+Josh: Boy
+ </code></pre>
 </body>
 </html>

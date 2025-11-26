@@ -41,24 +41,29 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="mwrite">mwrite</h1>
-<pre><code>tip&gt; mwrite
+<pre><code>
+tip&gt; mwrite
 usage: mwrite x,y,z mesh-file [(opt)]
  write data and mesh-data
  where x is data of size N.
        y is data of size M.
-       z is mesh-data of size N*M.</code></pre>
+       z is mesh-data of size N*M.
+ </code></pre>
 <h2 id="option">option</h2>
 <h3 id="option-with-quoted-argument-by">option with quoted argument by
 “”</h3>
@@ -174,7 +179,8 @@ field separator is a space character.</p>
 <p>The data file written by <code>mwrite</code> can be plotted by
 gnuplot using <code>splot</code>.</p>
 <p>example</p>
-<pre><code>$ tip
+<pre><code>
+$ tip
 tip&gt; set x = range(32,-3.2,3.2)
 tip&gt; set y = range(30,-3,3)
 tip&gt; mset z = log(1+2*x*x+3*y*y)
@@ -182,6 +188,7 @@ tip&gt; mwrite x,y,z mesh.dat
 tip&gt; q
 
 $ gnuplot
-gnuplot&gt; splot &#39;mesh.dat&#39; w l</code></pre>
+gnuplot&gt; splot &#39;mesh.dat&#39; w l
+ </code></pre>
 </body>
 </html>

@@ -41,12 +41,15 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
@@ -54,7 +57,8 @@ line-height: 1.45;
 <body>
 <h1 id="ex11-plot-1d2d-histograms-and-cutting-the-data">ex11: Plot 1D,2D
 Histograms and cutting the data</h1>
-<pre><code>opt (gd:1)
+<pre><code>
+opt (gd:1)
 
 set x = random(10000,gaus,2,0) ;# random gaussian sigma=2 mean=0
 set y = random(10000,gaus,4,0) ;# random gaussian sigma=4 mean=0
@@ -84,7 +88,8 @@ opt (nx:[nx] ny:[ny] xr:[xr] yr:[yr]) ;# set bin and range
 hplot2 x y
 
 title &quot;2D-histogram of x y, cut by [cc]&quot;
-hplot2 x_cut y_cut (lc:blue)</code></pre>
+hplot2 x_cut y_cut (lc:blue)
+ </code></pre>
 <p><img src="../fig/ex11.png" /></p>
 </body>
 </html>

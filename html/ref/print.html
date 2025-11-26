@@ -41,25 +41,30 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="print-println-pr-prn">print, println, pr, prn</h1>
-<pre><code>tip&gt; print
+<pre><code>
+tip&gt; print
 usage: print args...
        println args...
  print arguments with macro variables format.
                  (see also &#39;fmt&#39; command)
 print  : line is not returned. (abbreviate to &#39;pr&#39;)
-println: line is returned. (abbreviate to &#39;prn&#39;)</code></pre>
+println: line is returned. (abbreviate to &#39;prn&#39;)
+ </code></pre>
 <p>the following escape sequence is available.</p>
 <table>
 <thead>
@@ -79,18 +84,24 @@ println: line is returned. (abbreviate to &#39;prn&#39;)</code></pre>
 </tr>
 </tbody>
 </table>
-<pre><code>tip&gt; print Hello\tWorld\n
-Hello  World</code></pre>
+<pre><code>
+tip&gt; print Hello\tWorld\n
+Hello  World
+ </code></pre>
 <p>the quotations are printed as they are.</p>
-<pre><code>tip&gt; prn You said &quot;Hello World&quot;  ;# prn is abbr. of println 
-You said &quot;Hello World&quot;</code></pre>
+<pre><code>
+tip&gt; prn You said &quot;Hello World&quot;  ;# prn is abbr. of println 
+You said &quot;Hello World&quot;
+ </code></pre>
 <p>the value of the macro variable is formated using <a href="fmt.html">fmt</a> command.</p>
-<pre><code>tip&gt; @ e10=exp(10)
+<pre><code>
+tip&gt; @ e10=exp(10)
 tip&gt; prn [e10]
 22026.465795
 
 tip&gt; fmt %.3e
 tip&gt; prn [e10]
-2.203e+04</code></pre>
+2.203e+04
+ </code></pre>
 </body>
 </html>

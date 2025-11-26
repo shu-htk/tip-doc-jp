@@ -41,24 +41,29 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="fit3">fit3</h1>
-<pre><code>tip&gt; fit3
+<pre><code>
+tip&gt; fit3
 usage: fit3 x y z [plane] [(opt)]
  do fitting to the data x,y,z by plane function.
  you should do &#39;plot3 x y z&#39; before this command.
  available fitting functions:
-   p[lane] : z = c0 + c1*x + c2*y</code></pre>
+   p[lane] : z = c0 + c1*x + c2*y
+ </code></pre>
 <p>Fit the plane to data x, y and z after <a href="plot3.html">plot3</a>
 command. The fitting information is outputted to console and fitting
 plane is drawn on the existing graph. If you specify option

@@ -41,12 +41,15 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
@@ -55,8 +58,10 @@ line-height: 1.45;
 <h1 id="macrotool">MacroTool</h1>
 <p>MacroTool is the header-only class library which provide the
 following command:</p>
-<pre><code>macro commands:
+<pre><code>
+macro commands:
  @     : define numerical or string variable
+ args  : define default arguments of the macro file
  ++    : increment(+1) numerical variable
  --    : decrement(-1) numerical variable
  for   : foreach loop
@@ -66,14 +71,17 @@ following command:</p>
  fmt   : set output format of macro variable
  wait  : wait time or console input
  sys   : execute system command
+ split : split string variable
  calc  : evaluate the numerical expression
  logic : evaluate the logical expression
- q     : terminate this program</code></pre>
+ q     : terminate this program
+ </code></pre>
 <p>There is a simple example how to use MacroTool :
-<code>src/my_macro.cc</code>.</p>
-<pre><code>// my_macro : simple example how to use thl::MacroTool
+<code>src/c++03/my_macro.cc</code>.</p>
+<pre><code>
+// my_macro : simple example how to use thl::MacroTool
 //
-// -std=c++03
+// c++03
 //
 #include &quot;thl/MacroTool.hh&quot;
 
@@ -83,8 +91,10 @@ private:
 public:
   MyMacro() : _debug(0) {}
   int add_commands(std::string buf) {// called from thl::MacroTool::parse_vbuf()
-    thl::StrSplit args(buf);
-    if(args(0)==&quot;help&quot;) {
+    thl::StrSplit args;
+    args.set_quot_to_skip_split(&#39;&quot;&#39;);
+    args.split(buf);
+       if(args(0)==&quot;help&quot;) {
       printf(&quot;additional commands:\n&quot;
          &quot; exe  : execute a macro file.\n&quot;
          &quot; ls   : print macro variables.\n&quot;
@@ -95,13 +105,12 @@ public:
     }
     if(args(0)==&quot;exe&quot;) {
       if(args.size() &lt; 2) {
-    printf(&quot;usage: exe [macro_file] [debug]\n&quot;
+    printf(&quot;usage: exe [macro_file] [arg1,arg2,..]\n&quot;
            &quot; execute macro_file.\n&quot;);
     return 0;
       }
-      _debug = (args.size()&gt;2) ? 1 : 0;
-      if(_debug) printf(&quot;debug mode\n&quot;);
-      exec(args(1));
+      std::string arg_list=(args.size()&gt;2) ? args(2) : &quot;&quot;;
+      exec(args(1),arg_list);
       return 0;
     }
     if(args(0)==&quot;ls&quot;) {
@@ -118,7 +127,7 @@ public:
       if(args.size() &lt; 2) {
     printf(&quot;usage: rm [pattern]\n&quot;
            &quot; remove macro variables which matches pattern.\n&quot;
-           &quot; example: &#39;rm *&#39;  remove all macro variables.\n&quot;);
+           &quot; example: &#39;rm *&#39;  remvoe all macro variables.\n&quot;);
     return 0;
       }
       var.rm(args(1));
@@ -132,6 +141,7 @@ int main() {
   MyMacro macro;
   macro.main_loop();
   return 0;
-}</code></pre>
+}
+ </code></pre>
 </body>
 </html>

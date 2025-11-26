@@ -41,19 +41,23 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="cut">cut</h1>
-<pre><code>tip&gt; cut
+<pre><code>
+tip&gt; cut
 usage: cut v1,v2,... &quot;expression&quot;
  where v1,v2,... are data to cut
  new data v1_cut,v2_cut,... are created
@@ -61,7 +65,8 @@ example:
  cut x,y &quot;0&lt;x&lt;1 &amp; 1&lt;y&lt;2&quot;
  plot x_cut y_cut
 using option &#39;cc:&#39; it is also done by
- plot x y (cc:&quot;0&lt;x&lt;1 &amp; 1&lt;y&lt;2&quot;)</code></pre>
+ plot x y (cc:&quot;0&lt;x&lt;1 &amp; 1&lt;y&lt;2&quot;)
+ </code></pre>
 <p>select elements of data v1, v2, … by the condition of logical
 expression.<br />
 selected data are created named v1_cut, v2_cut, …</p>
@@ -70,16 +75,21 @@ commas and no spaces</p>
 <blockquote>
 <p>condition of logical expression should be quoted by “”</p>
 </blockquote>
-<pre><code>tip&gt; cut a,b,c &quot;a&gt;0&quot;    ; # OK
+<pre><code>
+tip&gt; cut a,b,c &quot;a&gt;0&quot;    ; # OK
 tip&gt; cut a, b, c &quot;a&gt;0&quot;  ; # NG
-tip&gt; cut a,b,c a&gt;0      ; # NG</code></pre>
+tip&gt; cut a,b,c a&gt;0      ; # NG
+ </code></pre>
 <p><strong>note2)</strong> &gt; size of data should be same</p>
-<pre><code>tip&gt; set x={1,2,3,4,5}
+<pre><code>
+tip&gt; set x={1,2,3,4,5}
 tip&gt; set y={10,20,30}
 tip&gt; cut x,y &quot;x&gt;2&quot;    ;# NG : size of y is different from size of x
-size of y != size of x</code></pre>
+size of y != size of x
+ </code></pre>
 <p>example</p>
-<pre><code>tip&gt; set name = {Taro, Jiro, Saburo, Shiro, Goro}
+<pre><code>
+tip&gt; set name = {Taro, Jiro, Saburo, Shiro, Goro}
 tip&gt; set hight = {167, 183, 172, 175, 178}
 tip&gt; cat *
 hight : data(num) :  167 183 172 175 178
@@ -93,7 +103,8 @@ name_cut : data(str) :  Taro Goro
 tip&gt; cut name,hight &quot;170&lt;hight&lt;180&quot;
 tip&gt; cat *_cut
 hight_cut : data(num) :  172 175 178
-name_cut : data(str) :  Saburo Shiro Goro</code></pre>
+name_cut : data(str) :  Saburo Shiro Goro
+ </code></pre>
 <p>see also - <a href="../ex/ex09.html">ex09: Data Cutting and
 simplified logical expression</a> - <a href="../ex/ex11.html">ex11: Plot
 1D,2D Histograms and cutting the data</a></p>

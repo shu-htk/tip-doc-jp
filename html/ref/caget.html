@@ -41,25 +41,30 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="caget">caget</h1>
-<pre><code>tip&gt; caget
+<pre><code>
+tip&gt; caget
 usage: caget EPICS_record [&gt; v]
  get the value from EPICS_record and print contents
  if &#39;&gt;&#39; is specified the value is redirected to the data v.
  also the following macro variable is created.
 macro variable:
-   v : the 1st element of data v</code></pre>
+   v : the 1st element of data v
+ </code></pre>
 <p>Get the all elements of EPICS_record and print them.</p>
 <p>If it is redirected to “&gt; v”, the following variables are
 created.</p>
@@ -70,7 +75,8 @@ created.</p>
 <code>@ v = (1st element of EPICS_record)</code></li>
 </ul>
 <p>exmaple</p>
-<pre><code>tip&gt; caget monitor:wf.NELM
+<pre><code>
+tip&gt; caget monitor:wf.NELM
 monitor:wf.NELM 2025-11-09 15:56:40.736024  100
 
 tip&gt; caget monitor:wf.NELM &gt; nelm
@@ -91,6 +97,7 @@ v2 : number [0.84147098481]   ;# created macro variable (1st elemrnt of wf)
 v2 : data(num) : size=100     ;# created data variable (all elements of wf)
 
 tip&gt; cat v2 (nr:1,2)
-v2 : data(num) :  0.84147098481 0.90929742683</code></pre>
+v2 : data(num) :  0.84147098481 0.90929742683
+ </code></pre>
 </body>
 </html>

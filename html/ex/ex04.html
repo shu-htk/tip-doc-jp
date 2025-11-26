@@ -41,19 +41,23 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="ex04-marge-2-histograms">ex04: Marge 2 Histograms</h1>
-<pre><code>opt (fc:gray)       ;# fill area color gray
+<pre><code>
+opt (fc:gray)       ;# fill area color gray
 opt (rc:1)          ;# relative coordinate for text/fbox/symb position 
 opt (cp:0.75,0.8)   ;# commnet position
 opt (xt:0.1)        ;# x-axis tick
@@ -85,7 +89,8 @@ hplot v3 (ft:pn45 xl:&quot;v1+v2&quot; yl:&quot;v1+v2 entries&quot;)
 set entry_sum = v1_hy + v2_hy
 plot v1_hx entry_sum (lw:0 st:star sc:blue rp:1)
 fbox 0.8 0.84 0.75 0.9 (lc:gray ft:pn45 lt:solid); text 0.85 0.85 &quot;(C)&quot;
-symb 0.82 0.65 (st:star sc:blue);                  text 0.85 0.65 &quot;(D)&quot;</code></pre>
+symb 0.82 0.65 (st:star sc:blue);                  text 0.85 0.65 &quot;(D)&quot;
+ </code></pre>
 <p><img src="../fig/ex04.png" /></p>
 </body>
 </html>

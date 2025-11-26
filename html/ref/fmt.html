@@ -41,26 +41,31 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="fmt">fmt</h1>
-<pre><code>tip&gt; fmt
+<pre><code>
+tip&gt; fmt
 usage: fmt [&quot;format&quot;|reset|show]
  specify output format of macro variable.
  (it is same as printf)
  if &quot;reset&quot;, it is set to default (&quot;%.11g&quot;)
  if &quot;show&quot;, print current format
  example: @ x=1; fmt %03.0f; prn [x]
- output:  001</code></pre>
+ output:  001
+ </code></pre>
 <p>available format specifiers</p>
 <table>
 <thead>
@@ -115,7 +120,8 @@ usage: fmt [&quot;format&quot;|reset|show]
 </tr>
 </tbody>
 </table>
-<pre><code>tip&gt; @ e=exp(1)
+<pre><code>
+tip&gt; @ e=exp(1)
 tip&gt; prn [e]
 2.7182818285
 
@@ -125,8 +131,10 @@ tip&gt; prn [e]
 
 tip&gt; fmt reset
 tip&gt; fmt show
-[%.11g]</code></pre>
-<pre><code>tip&gt; fmt %03d     ;# this is NG
+[%.11g]
+ </code></pre>
+<pre><code>
+tip&gt; fmt %03d     ;# this is NG
 invalid format [%03d]
 since numerical variable type is &#39;double&#39;
 you should specify the format &#39;f&#39; or &#39;e&#39; or &#39;g&#39;
@@ -142,6 +150,7 @@ test006.dat
 test007.dat
 test008.dat
 test009.dat
-test010.dat</code></pre>
+test010.dat
+ </code></pre>
 </body>
 </html>

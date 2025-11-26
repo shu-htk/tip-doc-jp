@@ -29,12 +29,14 @@ code {
 }
 
 pre {
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow-x: auto;
   text-align: left;
   text-indent: 0;
   padding: 2px 16px;
   background-color: #f6f8fa;
   border: 2px solid gray;
   border-radius: 6px;
-  overflow-x: auto;
   line-height: 1.45;
 }

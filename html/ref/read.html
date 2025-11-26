@@ -41,24 +41,29 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="read">read</h1>
-<pre><code>tip&gt; read
+<pre><code>
+tip&gt; read
 usage: read v1,v2,... file_name [(opt)]
        read v1,v2,... `command` [(opt)]
  where v1,v2,... are list of data to read
  if `command` specified instead of file_name,
- data are read from the out put of the system command</code></pre>
+ data are read from the out put of the system command
+ </code></pre>
 <h2 id="option">option</h2>
 <h3 id="option-with-two-arguments">option with two arguments</h3>
 <blockquote>
@@ -109,7 +114,9 @@ default field separator is a space character.</p>
 </table>
 <h2 id="naming-rule-of-valiable-list">naming rule of valiable list</h2>
 <p>If it is specified a list of N variables, and file has M columns,</p>
-<pre><code> read v1,v2,...,vN  file_of_M_column.dat</code></pre>
+<pre><code>
+ read v1,v2,...,vN  file_of_M_column.dat
+ </code></pre>
 <ul>
 <li>if N &lt; M, last n columns are named as vN1, … , vNn (n=M-N+1)</li>
 <li>if N &gt; M, vn, … , VN are ignored (n=M+1)</li>
@@ -121,7 +128,8 @@ system command</h2>
 read through the pipe.</p>
 </blockquote>
 <p>example,</p>
-<pre><code>tip&gt; set id={1,2,3,4,5}
+<pre><code>
+tip&gt; set id={1,2,3,4,5}
 tip&gt; set name={A,B,C,D,E}
 tip&gt; set val1={11,21,31,41,51}
 tip&gt; set val2={12,22,32,42,52}
@@ -174,6 +182,7 @@ x1 : data(num) :  2 3 4
 x2 : data(str) :  B C D
 x3 : data(num) :  21 31 41
 x4 : data(num) :  22 32 42
-x5 : data(num) :  23 33 43</code></pre>
+x5 : data(num) :  23 33 43
+ </code></pre>
 </body>
 </html>

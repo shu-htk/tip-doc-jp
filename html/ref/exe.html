@@ -41,26 +41,31 @@ padding: 6px;
 border-radius: 3px;
 }
 pre {
+white-space: pre-wrap;
+word-break: break-all;
+overflow-x: auto;
+text-align: left;
 text-indent: 0;
-padding: 16px;
+padding: 2px 16px;
 background-color: #f6f8fa;
 border: 2px solid gray;
 border-radius: 6px;
-overflow-x: auto;
 line-height: 1.45;
 }
 </style>
 </head>
 <body>
 <h1 id="exe">exe</h1>
-<pre><code>tip&gt; exe
+<pre><code>
+tip&gt; exe
 usage: exe [macro_file] [arg1,arg2,...] [(opt)]
  execute macro_file
  arguments are referenced as macro variables
  they are named like x1=val,x2=val2,...
  if it is specified only values like val1,val2,...
  they are named $1=val1,$2=val2,...
- number of argumnts is named $#</code></pre>
+ number of argumnts is named $#
+ </code></pre>
 <h2 id="option">option</h2>
 <ul>
 <li><code>dm:</code> set flag of debug-mode</li>
@@ -70,16 +75,20 @@ arguments</h2>
 <blockquote>
 <p>arguments are separated by commas with no spaces.</p>
 </blockquote>
+<p>see also <a href="args.html">args</a></p>
 <h3 id="named-arguments">(1) Named arguments</h3>
 <p>example macro file : <code>gaus.tip</code></p>
-<pre><code>args title=&quot;test&quot;,ndata=1000,sigma=1,mean=0  ;# default parameters
+<pre><code>
+args title=&quot;test&quot;,ndata=1000,sigma=1,mean=0  ;# default parameters
 
 title &quot;[title]&quot;
 set x=random([ndata],gaus,[sigma],[mean])
 hplot x (gd:1)
-stat x (rc:1 cp:0.65,0.95)</code></pre>
+stat x (rc:1 cp:0.65,0.95)
+ </code></pre>
 <p>executting <code>gaus.tip</code> with different parameters</p>
-<pre><code>tip&gt; exe gaus.tip            ;# using default parameters
+<pre><code>
+tip&gt; exe gaus.tip            ;# using default parameters
 @ Statistics:
  entry=1000
  max= 3.36499
@@ -101,7 +110,8 @@ tip&gt; exe gaus.tip title=&quot;param set 2&quot;,ndata=200000,sigma=0.2,mean=3
  max= 3.89212
  min= 2.0552
  mean= 3.00067
- rms= 0.200458</code></pre>
+ rms= 0.200458
+ </code></pre>
 <h3 id="unnamed-arguments">(2) Unnamed arguments</h3>
 <table>
 <thead>
@@ -126,16 +136,19 @@ tip&gt; exe gaus.tip title=&quot;param set 2&quot;,ndata=200000,sigma=0.2,mean=3
 </tbody>
 </table>
 <p>example macro file : <code>args.tip</code></p>
-<pre><code>if [$#]
+<pre><code>
+if [$#]
    do n 1 [$#]
       prn arg [n] is [$[n]]
    end
 else   
    prn no args
-fi</code></pre>
+fi
+ </code></pre>
 <p>executting <code>args.tip</code> with different number of
 arguments</p>
-<pre><code>tip&gt; exe args.tip
+<pre><code>
+tip&gt; exe args.tip
 no args
 
 tip&gt; exe args.tip 1,2,3
@@ -149,14 +162,18 @@ arg 2 is 2
 arg 3 is 3
 arg 4 is a
 arg 5 is b
-arg 6 is c</code></pre>
+arg 6 is c
+ </code></pre>
 <h2 id="execute-macro-file-with-debug-mode">Execute macro file with
 debug-mode</h2>
 <p>example macro file : <code>test.tip</code></p>
-<pre><code>@ s=abc
-set x={1,2,3}</code></pre>
+<pre><code>
+@ s=abc
+set x={1,2,3}
+ </code></pre>
 <p>executing <code>test.tip</code></p>
-<pre><code>tip&gt; rm *
+<pre><code>
+tip&gt; rm *
 tip&gt; exe test.tip
 tip&gt; ls *               ;# nothing to show
 
@@ -167,6 +184,7 @@ s : string [abc]
 x : data(num) : size=3
 
 tip&gt; cat x
-x : data(num) :  1 2 3</code></pre>
+x : data(num) :  1 2 3
+ </code></pre>
 </body>
 </html>
